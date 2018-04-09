@@ -68,6 +68,54 @@ github.com/cloudyr
 ---
 class: middle
 
+
+
+```r
+library(rvest)
+
+h &lt;- read_html("http://www.billshorten.com.au/transcripts")
+```
+
+
+
+
+
+Extracting anchors/links on the page:
+
+```r
+anchors &lt;- html_nodes(h, "a")
+```
+
+`&lt;a href=\"/transcript_doorstop_canberra_monday_27_november_2017\"&gt;
+TRANSCRIPT - DOORSTOP - CANBERRA - MONDAY, 27 NOVEMBER 2017 &lt;/a&gt;`
+
+---
+class: middle
+
+Separate the text and the `href`:
+
+```r
+html_text(anchors)[30:32]
+```
+
+```
+## [1] "TRANSCRIPT - DOORSTOP - CANBERRA - MONDAY, 27 NOVEMBER 2017 "
+## [2] "TRANSCRIPT - DOORSTOP - SYDNEY - FRIDAY, 24 NOVEMBER 2017 "  
+## [3] "TRANSCRIPT - DOORSTOP - SYDNEY - THURSDAY, 23 NOVEMBER 2017 "
+```
+
+```r
+html_attr(anchors, "href")[30:32]
+```
+
+```
+## [1] "/transcript_doorstop_canberra_monday_27_november_2017"
+## [2] "/transcript_doorstop_sydney_friday_24_november_2017"  
+## [3] "/transcript_doorstop_sydney_thursday_23_november_2017"
+```
+---
+class: middle
+
 # Processing/Cleaning
 
 ```html
@@ -124,13 +172,45 @@ div class="headline"&gt;
 
 .footnote[
 cran.r-project.org/package=RSentiment
+
 github.com/juliasilge/tidytext
 ]
 ---
-class: center, middle
+class: middle
 
 
 # A useable data set!
+
+### - Features
+### - Scope
+### - Coverage/Quality
+
+---
+class: middle
+
+# Visualisation and Exloration Tools
+
+### - shiny (simple interactive web apps) 
+### - plotly (interactive visualisatons) 
+### - leaflet (interactive maps)
+
+.footnote[
+github.com/rstudio/shiny
+
+github.com/ropensci/plotly
+
+github.com/rstudio/leaflet
+]
+---
+
+class: middle
+
+# Analysis
+
+### - Who drives debate?
+### - Rural v Urban Language
+### - Sentiment
+### - Favouraite Phrases
 
 ---
     </textarea>

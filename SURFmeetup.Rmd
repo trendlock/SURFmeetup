@@ -14,6 +14,7 @@ output:
 
 ```{r setup, include=FALSE}
 options(htmltools.dir.version = FALSE)
+options(width = 60)
 ```
 
 
@@ -62,6 +63,44 @@ github.com/hadley/rvest
 github.com/cloudyr
 ]
 
+---
+class: middle
+```{r, echo = F, warning=F, message=F}
+library(rvest)
+
+h <- read_html("html/shorten_transcipts.html")
+
+```
+
+```{r, echo=T, eval=F}
+library(rvest)
+
+h <- read_html("http://www.billshorten.com.au/transcripts")
+```
+
+
+
+
+
+Extracting anchors/links on the page:
+```{r, echo=T}
+
+anchors <- html_nodes(h, "a")
+
+```
+
+`<a href=\"/transcript_doorstop_canberra_monday_27_november_2017\">
+TRANSCRIPT - DOORSTOP - CANBERRA - MONDAY, 27 NOVEMBER 2017 </a>`
+
+---
+class: middle
+
+Separate the text and the `href`:
+```{r}
+html_text(anchors)[30:32]
+
+html_attr(anchors, "href")[30:32]
+```
 ---
 class: middle
 
@@ -151,7 +190,14 @@ github.com/rstudio/leaflet
 ]
 ---
 
+class: middle
 
+# Analysis
+
+### - Who drives debate?
+### - Rural v Urban Language
+### - Sentiment
+### - Favouraite Phrases
 
 ---
 
