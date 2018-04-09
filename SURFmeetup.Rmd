@@ -1,7 +1,7 @@
 ---
 title: "Turning Turnbull and Shorten into data"
 subtitle: "Aidan Morrison & Ross Ireland"
-date: "11/04/2018"
+date: "April 2018"
 output:
   xaringan::moon_reader:
     lib_dir: libs
@@ -16,77 +16,142 @@ output:
 options(htmltools.dir.version = FALSE)
 ```
 
-class: center, middle
+
+![](images/shorten_media.png)
+
+
+---
+
+![](images/turnbull_media.png)
+
+
+---
+
+class:  middle
 
 # Motivation
+### - Accessing and cleaning data in the real world
+### - Wholistic, public, potential interest, SEARCHABLE, find events
+### - Endless analysis possible, just a start, eg "Driving Debate" or "Sentiment"
 
 ---
 
-### Accessing and cleaning data in the real world
-### Wholistic, public, potential interest, SEARCHABLE, find events
-### Endless analysis possible, just a start, eg "Driving Debate" or "Sentiment"
+class: middle
+
+# Source
+
+### - Inspecting media pages (transcipts, media releases and opinion pieces)
+### - Engineering a method to systimaticall crawl the site
+### - Understanding the typical layout of a media page
 
 ---
+class: middle
 
-You are recommended to use the [RStudio IDE](https://www.rstudio.com/products/rstudio/), but you do not have to.
+# Scrape
 
-- Create a new R Markdown document from the menu `File -> New File -> R Markdown -> From Template -> Ninja Presentation`;<sup>1</sup>
+### - rvest (web scraping html pages)
+### - cloudyr (a project full of clients to cloud computing services)
+- awspack
+- aws.s3
+- googleCloudStorageR
 
---
-
-- Click the `Knit` button to compile it;
-
---
-
-- or use the [RStudio Addin](https://rstudio.github.io/rstudioaddins/)<sup>2</sup> "Infinite Moon Reader" to live preview the slides (every time you update and save the Rmd document, the slides will be automatically reloaded in RStudio Viewer.
 
 .footnote[
-[1] 中文用户请看[这份教程](http://slides.yihui.name/xaringan/zh-CN.html)
+github.com/hadley/rvest
 
-[2] See [#2](https://github.com/yihui/xaringan/issues/2) if you do not see the template or addin in RStudio.
+github.com/cloudyr
 ]
 
 ---
+class: middle
 
-# Hello Ninja
+# Processing/Cleaning
+```{html, eval=F}
+div class="headline">
+  <h2>TRANSCRIPT - DOORSTOP - MELBOURNE - FRIDAY, 26 JANUARY 2018</h2>
+</div>
 
-As a presentation ninja, you certainly should not be satisfied by the "Hello World" example. You need to understand more about two things:
+<div id="content">
 
-1. The [remark.js](https://remarkjs.com) library;
+  <div id="intro" class="intro">
+    <div class="content">
+      <p><strong>E&amp;OE TRANSCRIPT<br></strong><strong>DOORSTOP<br></strong><strong>MELBOURNE<br></strong><strong>FRIDAY, 26 JANUARY 2018</strong></p>
+<p><strong>SUBJECT/S: <em>Australian of the Year, trade, Australia Day, republic, cost of living. </em></strong></p><p><strong>BILL SHORTEN, LEADER OF THE OPPOSITION:</strong> Good morning everybody. I’m fortunate to be in the western Suburbs of Melbourne, welcoming 150 new Australian citizens.</p>
+<p>I’d like to congratulate Australian of the Year, Michelle Simmons. Her win is a win for her and her personal hard work, but it’s also a win for science, and it’s </p>
+<p>Happy to take any questions that people might have.</p>
+<p><strong>JOURNALIST:</strong> Is there any hope now that the US can re-join the TPP deal?</p>
+<p><strong>SHORTEN:</strong> I think first of all we need to see if this new trade agreement stacks up. Let me be very clear, this is not the old Trans Pacific Partnership which included the United States. I was right when I said that Donald Trump had walked away from that, and he hasn’t come back. But this new arrangement, whilst it’s much </p>
+<p>If it stacks up, Labor will give it the tick, if it doesn’t stack up then we’re not going to give it the tick. What we need to do is always watch out for the interests of working and middle-class Aussies, </p>
+<p><strong>JOURNALIST:</strong> Just back on Australia Day, we’ve already seen a few far right rallyists go to citizenship ceremonies and they’ll be holding an event in St Kilda today, what do you have to say to those people?</p>
+```
 
-1. The **xaringan** package;
+---
 
-Basically **xaringan** injected the chakra of R Markdown (minus Pandoc) into **remark.js**. The slides are rendered by remark.js in the web browser, and the Markdown source needed by remark.js is generated from R Markdown (**knitr**).
+#### Aidans ratio method
+#### boilerpipeR
+
+.footnote[github.com/mannau/boilerpipeR]
+---
+
+## Comparing methods
+
 
 ---
 
-# remark.js
+## Using Natural Language Processing (NLP)
 
-You can see an introduction of remark.js from [its homepage](https://remarkjs.com). You should read the [remark.js Wiki](https://github.com/gnab/remark/wiki) at least once to know how to
-
-- create a new slide (Markdown syntax<sup>*</sup> and slide properties);
-
-- format a slide (e.g. text alignment);
-
-- configure the slideshow;
-
-- and use the presentation (keyboard shortcuts).
-
-It is important to be familiar with remark.js before you can understand the options in **xaringan**.
-
-.footnote[[*] It is different with Pandoc's Markdown! It is limited but should be enough for presentation purporses. Come on... You do not need a slide for the Table of Contents! Well, the Markdown support in remark.js [may be improved](https://github.com/gnab/remark/issues/142) in the future.]
+- Named Entity Recognition (NER)
+- people, places, organisations, currency, dates, times
 
 ---
-background-image: url(`r xaringan:::karl`)
-background-size: cover
-class: center, bottom, inverse
 
-# I was so happy to have discovered remark.js!
+## tidytext
+
+- Tokenize a string
+- Splitting a speech into sentences, phrases and words
+
+.footnote[github.com/juliasilge/tidytext]
+---
+
+## Sentiment Analysis
+
+- RSentiment and tidytext
+- 
+
+.footnote[
+cran.r-project.org/package=RSentiment
+
+github.com/juliasilge/tidytext
+]
+---
+class: middle
+
+
+# A useable data set!
+
+### - Features
+### - Scope
+### - Coverage/Quality
 
 ---
-class: inverse, middle, center
+class: middle
 
-# Using xaringan
+# Visualisation and Exloration Tools
+
+### - shiny (simple interactive web apps) 
+### - plotly (interactive visualisatons) 
+### - leaflet (interactive maps)
+
+.footnote[
+github.com/rstudio/shiny
+
+github.com/ropensci/plotly
+
+github.com/rstudio/leaflet
+]
+---
+
+
 
 ---
 
