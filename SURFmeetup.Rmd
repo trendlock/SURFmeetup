@@ -174,6 +174,24 @@ div class="headline">
 
 ---
 
+class: middle
+
+```{r, eval=F}
+
+library(boilerpipeR)
+
+DefaultExtractor()
+ArticleExtractor()
+KeepEverythingExtractor()
+LargestContentExtractor()
+NumWordsRulesExtractor()
+
+```
+
+
+
+---
+
 ## tidytext
 
 - Tokenize a string
@@ -295,17 +313,10 @@ df_speech <- mutate(df_speech, who = case_when(
   str_detect(sent, "SHORTEN:") ~ "BS",
   str_detect(sent, "TURNBULL|PRIME MINISTER:") ~ "MT",
   str_detect(sent, "[[:upper:]]:") ~ "Other"
-  ))
+  )) %>% 
+  tidyr::fill(df_speech, who)
 
 df_speech
-```
-
----
-
-class: middle
-
-```{r}
-tidyr::fill(df_speech, who) 
 ```
 
 
@@ -337,7 +348,7 @@ class: middle
 # Analysis
 
 ### - Who drives debate?
-### - Urban v Suburban/Regional
+### - Language and Location
 
 ### - Sentiment
 ### - Favouraite Phrases
