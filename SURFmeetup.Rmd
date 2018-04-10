@@ -337,9 +337,48 @@ class: middle
 # Analysis
 
 ### - Who drives debate?
-### - Rural v Urban Language
+### - Urban v Suburban/Regional
+
 ### - Sentiment
 ### - Favouraite Phrases
 
 ---
 
+class: middle, center
+
+# Urban v Suburban/Regional
+
+![](images/map.png)
+
+---
+
+class: middle, center
+
+# Melbourne
+
+![](images/melb_0.png)
+
+---
+
+class: middle, center
+
+# Melbourne
+
+![](images/melb_1.png)
+
+
+---
+
+class: middle, center
+
+# Melbourne
+
+![](images/melb_2.png)
+
+---
+
+
+
+
+
+---
