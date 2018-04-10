@@ -51,17 +51,13 @@ class: middle
 # Scrape
 
 ### - rvest (web scraping html pages)
-### - cloudyr (a project full of clients to cloud computing services)
+### - cloudyr (a open source project with many clients to cloud computing services)
 - awspack
 - aws.s3
 - googleCloudStorageR
 
 
-.footnote[
-github.com/hadley/rvest
-
-github.com/cloudyr
-]
+.footnote[[hadley/rvest](github.com/hadley/rvest)  -  [cloudyr](github.com/cloudyr)]
 
 ---
 class: middle
@@ -89,18 +85,60 @@ anchors <- html_nodes(h, "a")
 
 ```
 
+An example:
+
 `<a href=\"/transcript_doorstop_canberra_monday_27_november_2017\">
 TRANSCRIPT - DOORSTOP - CANBERRA - MONDAY, 27 NOVEMBER 2017 </a>`
 
 ---
 class: middle
 
-Separate the text and the `href`:
-```{r}
-html_text(anchors)[30:32]
+`<a href=\"/transcript_doorstop_canberra_monday_27_november_2017\">
+TRANSCRIPT - DOORSTOP - CANBERRA - MONDAY, 27 NOVEMBER 2017 </a>`
 
-html_attr(anchors, "href")[30:32]
+Separate the text and the `href`:
+```{r, eval=F}
+html_text(anchors)
 ```
+"TRANSCRIPT - DOORSTOP - CANBERRA - MONDAY, 27 NOVEMBER 2017"
+```{r, eval=F}
+html_attr(anchors, "href")
+```
+"/transcript_doorstop_canberra_monday_27_november_2017"
+
+---
+
+class: middle
+
+# Managing errors
+
+Safely catch errors and respond to them:
+
+```{r, eval=F}
+h <- read_html("http://www.billshorten.com.au/transcript")
+```
+`Error in open.connection(x, "rb") : HTTP error 404.`
+
+
+---
+
+class: middle
+
+```{r}
+safe_read_html <- purrr::safely(read_html)
+
+h <- safe_read_html("http://www.billshorten.com.au/transcript")
+
+h
+
+h <- safe_read_html("http://www.billshorten.com.au/transcripts")
+
+h
+
+```
+
+
+
 ---
 class: middle
 
@@ -129,18 +167,10 @@ div class="headline">
 #### Aidans ratio method
 #### boilerpipeR
 
-.footnote[github.com/mannau/boilerpipeR]
+.footnote[[mannau/boilerpipeR](github.com/mannau/boilerpipeR)]
 ---
 
 ## Comparing methods
-
-
----
-
-## Using Natural Language Processing (NLP)
-
-- Named Entity Recognition (NER)
-- people, places, organisations, currency, dates, times
 
 ---
 
@@ -149,19 +179,136 @@ div class="headline">
 - Tokenize a string
 - Splitting a speech into sentences, phrases and words
 
-.footnote[github.com/juliasilge/tidytext]
+.footnote[[juliasilge/tidytext](github.com/juliasilge/tidytext)]
 ---
+
+## Using Natural Language Processing (NLP)
+
+- Named Entity Recognition (NER)
+- people, places, organisations, currency, dates, times
+
+"It's great to be in Burnie at the University of Tasmania Campus here with my colleague Senator Anne Urquhart."
+
+`NLP` and `openNLP`
+```{r, echo=F}
+people <- c("Anne Urquhart");
+orgs <- c("University of Tasmania")
+places <- c("Burnie", "Tasmania")
+```
+```{r, eval=F}
+person_ann <- Maxent_Entity_Annotator(kind = "person")
+location_ann <- Maxent_Entity_Annotator(kind = "location")
+organization_ann <- Maxent_Entity_Annotator(kind = "organization")
+
+people <- entities(sent, kind = "person")
+places <- entities(bio_doc, kind = "location")
+orgs <- entities(bio_doc, kind = "organization")
+```
+
+---
+
+class: middle
+
+"It's great to be in Burnie at the University of Tasmania Campus here with my colleague Senator Anne Urquhart."
+
+```{r}
+people
+places
+orgs
+```
+
+---
+class: middle
 
 ## Sentiment Analysis
 
-- RSentiment and tidytext
-- 
+- `RSentiment` and `tidytext`
+- Scoring sentences on a spectrum of negativity and positivity
 
-.footnote[
-cran.r-project.org/package=RSentiment
+.footnote[[RSentiment](http://cran.r-project.org/package=RSentiment)  -  [juliasilge/tidytext](http://github.com/juliasilge/tidytext)]
 
-github.com/juliasilge/tidytext
-]
+---
+class: middle
+
+```{r, eval= F}
+library(RSentiment)
+```
+
+"The real problem here is that the people of Australia don't like the Government because they're so hopelessly out of touch."
+
+```{r, eval=F}
+sentence_chr <- "The real problem here is that the people of Australia don't like the Government because they're so hopelessly out of touch."
+calculate_sentiment(sentence_chr)
+```
+```{r, echo=F}
+"Very Negative"
+```
+
+"It's fabulous to be back in Queensland - coming into the home straight ready to hit the line strong."
+```{r, eval=F}
+sentence_chr <- "It's fabulous to be back in Queensland - coming into the home straight ready to hit the line strong."
+calculate_sentiment(sentence_chr)
+```
+```{r, echo=F}
+"Very Positive"
+```
+
+
+---
+
+class: middle
+
+### Identifying whose words are who's
+
+![](images/lignin.png)
+
+---
+
+# String Manipulation
+
+```{r, eval=F}
+library(dplyr)
+library(stringr)
+```
+
+
+```{r, echo=F, message=F, warning=F}
+library(dplyr)
+library(stringr)
+df_speech <- readr::read_rds("data/lignin.rds") %>% 
+  tibble::tibble(sent = .)
+```
+
+```{r}
+df_speech
+```
+
+.footnote[[tidyverse/stringr](https://github.com/tidyverse/stringr)]
+
+---
+
+class: middle
+
+```{r}
+df_speech <- mutate(df_speech, who = case_when(
+  str_detect(sent, "JOURNALIST:") ~ "Jrn",
+  str_detect(sent, "SHORTEN:") ~ "BS",
+  str_detect(sent, "TURNBULL|PRIME MINISTER:") ~ "MT",
+  str_detect(sent, "[[:upper:]]:") ~ "Other"
+  ))
+
+df_speech
+```
+
+---
+
+class: middle
+
+```{r}
+tidyr::fill(df_speech, who) 
+```
+
+
 ---
 class: middle
 
@@ -182,12 +329,7 @@ class: middle
 ### - leaflet (interactive maps)
 
 .footnote[
-github.com/rstudio/shiny
-
-github.com/ropensci/plotly
-
-github.com/rstudio/leaflet
-]
+[rstudio/shiny](http://github.com/rstudio/shiny) - [ropensci/plotly](http://github.com/ropensci/plotly) - [rstudio/leaflet](http://github.com/rstudio/leaflet)]
 ---
 
 class: middle

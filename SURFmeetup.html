@@ -53,17 +53,13 @@ class: middle
 # Scrape
 
 ### - rvest (web scraping html pages)
-### - cloudyr (a project full of clients to cloud computing services)
+### - cloudyr (a open source project with many clients to cloud computing services)
 - awspack
 - aws.s3
 - googleCloudStorageR
 
 
-.footnote[
-github.com/hadley/rvest
-
-github.com/cloudyr
-]
+.footnote[[hadley/rvest](github.com/hadley/rvest)  -  [cloudyr](github.com/cloudyr)]
 
 ---
 class: middle
@@ -86,33 +82,84 @@ Extracting anchors/links on the page:
 anchors &lt;- html_nodes(h, "a")
 ```
 
+An example:
+
 `&lt;a href=\"/transcript_doorstop_canberra_monday_27_november_2017\"&gt;
 TRANSCRIPT - DOORSTOP - CANBERRA - MONDAY, 27 NOVEMBER 2017 &lt;/a&gt;`
 
 ---
 class: middle
 
+`&lt;a href=\"/transcript_doorstop_canberra_monday_27_november_2017\"&gt;
+TRANSCRIPT - DOORSTOP - CANBERRA - MONDAY, 27 NOVEMBER 2017 &lt;/a&gt;`
+
 Separate the text and the `href`:
 
 ```r
-html_text(anchors)[30:32]
+html_text(anchors)
+```
+"TRANSCRIPT - DOORSTOP - CANBERRA - MONDAY, 27 NOVEMBER 2017"
+
+```r
+html_attr(anchors, "href")
+```
+"/transcript_doorstop_canberra_monday_27_november_2017"
+
+---
+
+class: middle
+
+# Managing errors
+
+Safely catch errors and respond to them:
+
+
+```r
+h &lt;- read_html("http://www.billshorten.com.au/transcript")
+```
+`Error in open.connection(x, "rb") : HTTP error 404.`
+
+
+---
+
+class: middle
+
+
+```r
+safe_read_html &lt;- purrr::safely(read_html)
+
+h &lt;- safe_read_html("http://www.billshorten.com.au/transcript")
+
+h
 ```
 
 ```
-## [1] "TRANSCRIPT - DOORSTOP - CANBERRA - MONDAY, 27 NOVEMBER 2017 "
-## [2] "TRANSCRIPT - DOORSTOP - SYDNEY - FRIDAY, 24 NOVEMBER 2017 "  
-## [3] "TRANSCRIPT - DOORSTOP - SYDNEY - THURSDAY, 23 NOVEMBER 2017 "
+## $result
+## NULL
+## 
+## $error
+## &lt;simpleError in open.connection(x, "rb"): HTTP error 404.&gt;
 ```
 
 ```r
-html_attr(anchors, "href")[30:32]
+h &lt;- safe_read_html("http://www.billshorten.com.au/transcripts")
+
+h
 ```
 
 ```
-## [1] "/transcript_doorstop_canberra_monday_27_november_2017"
-## [2] "/transcript_doorstop_sydney_friday_24_november_2017"  
-## [3] "/transcript_doorstop_sydney_thursday_23_november_2017"
+## $result
+## {xml_document}
+## &lt;html lang="en"&gt;
+## [1] &lt;head&gt;\n&lt;meta http-equiv="Content-Type" content="text ...
+## [2] &lt;body&gt;\n&lt;div id="ZN_4YktvKMlWgWYIWF"&gt;&lt;!--DO NOT REMOV ...
+## 
+## $error
+## NULL
 ```
+
+
+
 ---
 class: middle
 
@@ -142,18 +189,10 @@ div class="headline"&gt;
 #### Aidans ratio method
 #### boilerpipeR
 
-.footnote[github.com/mannau/boilerpipeR]
+.footnote[[mannau/boilerpipeR](github.com/mannau/boilerpipeR)]
 ---
 
 ## Comparing methods
-
-
----
-
-## Using Natural Language Processing (NLP)
-
-- Named Entity Recognition (NER)
-- people, places, organisations, currency, dates, times
 
 ---
 
@@ -162,19 +201,189 @@ div class="headline"&gt;
 - Tokenize a string
 - Splitting a speech into sentences, phrases and words
 
-.footnote[github.com/juliasilge/tidytext]
+.footnote[[juliasilge/tidytext](github.com/juliasilge/tidytext)]
 ---
+
+## Using Natural Language Processing (NLP)
+
+- Named Entity Recognition (NER)
+- people, places, organisations, currency, dates, times
+
+"It's great to be in Burnie at the University of Tasmania Campus here with my colleague Senator Anne Urquhart."
+
+`NLP` and `openNLP`
+
+
+```r
+person_ann &lt;- Maxent_Entity_Annotator(kind = "person")
+location_ann &lt;- Maxent_Entity_Annotator(kind = "location")
+organization_ann &lt;- Maxent_Entity_Annotator(kind = "organization")
+
+people &lt;- entities(sent, kind = "person")
+places &lt;- entities(bio_doc, kind = "location")
+orgs &lt;- entities(bio_doc, kind = "organization")
+```
+
+---
+
+class: middle
+
+"It's great to be in Burnie at the University of Tasmania Campus here with my colleague Senator Anne Urquhart."
+
+
+```r
+people
+```
+
+```
+## [1] "Anne Urquhart"
+```
+
+```r
+places
+```
+
+```
+## [1] "Burnie"   "Tasmania"
+```
+
+```r
+orgs
+```
+
+```
+## [1] "University of Tasmania"
+```
+
+---
+class: middle
 
 ## Sentiment Analysis
 
-- RSentiment and tidytext
-- 
+- `RSentiment` and `tidytext`
+- Scoring sentences on a spectrum of negativity and positivity
 
-.footnote[
-cran.r-project.org/package=RSentiment
+.footnote[[RSentiment](http://cran.r-project.org/package=RSentiment)  -  [juliasilge/tidytext](http://github.com/juliasilge/tidytext)]
 
-github.com/juliasilge/tidytext
-]
+---
+class: middle
+
+
+```r
+library(RSentiment)
+```
+
+"The real problem here is that the people of Australia don't like the Government because they're so hopelessly out of touch."
+
+
+```r
+sentence_chr &lt;- "The real problem here is that the people of Australia don't like the Government because they're so hopelessly out of touch."
+calculate_sentiment(sentence_chr)
+```
+
+```
+## [1] "Very Negative"
+```
+
+"It's fabulous to be back in Queensland - coming into the home straight ready to hit the line strong."
+
+```r
+sentence_chr &lt;- "It's fabulous to be back in Queensland - coming into the home straight ready to hit the line strong."
+calculate_sentiment(sentence_chr)
+```
+
+```
+## [1] "Very Positive"
+```
+
+
+---
+
+class: middle
+
+### Identifying whose words are who's
+
+![](images/lignin.png)
+
+---
+
+# String Manipulation
+
+
+```r
+library(dplyr)
+library(stringr)
+```
+
+
+
+
+
+```r
+df_speech
+```
+
+```
+## # A tibble: 5 x 1
+##   sent                                                     
+##   &lt;chr&gt;                                                    
+## 1 JOURNALIST: Would you like to see more companies who are…
+## 2 PRIME MINISTER: Visy has the opportunity to do so becaus…
+## 3 Is that the right term?                                  
+## 4 ANTHONY PRATT: Lignin, yeah.                             
+## 5 PRIME MINISTER: Lignin which is the by-product of the pa…
+```
+
+.footnote[[tidyverse/stringr](https://github.com/tidyverse/stringr)]
+
+---
+
+class: middle
+
+
+```r
+df_speech &lt;- mutate(df_speech, who = case_when(
+  str_detect(sent, "JOURNALIST:") ~ "Jrn",
+  str_detect(sent, "SHORTEN:") ~ "BS",
+  str_detect(sent, "TURNBULL|PRIME MINISTER:") ~ "MT",
+  str_detect(sent, "[[:upper:]]:") ~ "Other"
+  ))
+
+df_speech
+```
+
+```
+## # A tibble: 5 x 2
+##   sent                                                who  
+##   &lt;chr&gt;                                               &lt;chr&gt;
+## 1 JOURNALIST: Would you like to see more companies w… Jrn  
+## 2 PRIME MINISTER: Visy has the opportunity to do so … MT   
+## 3 Is that the right term?                             &lt;NA&gt; 
+## 4 ANTHONY PRATT: Lignin, yeah.                        Other
+## 5 PRIME MINISTER: Lignin which is the by-product of … MT
+```
+
+---
+
+class: middle
+
+
+```r
+tidyr::fill(df_speech, who) 
+```
+
+```
+## # A tibble: 5 x 2
+##   sent                                                who  
+##   &lt;chr&gt;                                               &lt;chr&gt;
+## 1 JOURNALIST: Would you like to see more companies w… Jrn  
+## 2 PRIME MINISTER: Visy has the opportunity to do so … MT   
+## 3 Is that the right term?                             MT   
+## 4 ANTHONY PRATT: Lignin, yeah.                        Other
+## 5 PRIME MINISTER: Lignin which is the by-product of … MT
+```
+
+
 ---
 class: middle
 
@@ -195,12 +404,7 @@ class: middle
 ### - leaflet (interactive maps)
 
 .footnote[
-github.com/rstudio/shiny
-
-github.com/ropensci/plotly
-
-github.com/rstudio/leaflet
-]
+[rstudio/shiny](http://github.com/rstudio/shiny) - [ropensci/plotly](http://github.com/ropensci/plotly) - [rstudio/leaflet](http://github.com/rstudio/leaflet)]
 ---
 
 class: middle
