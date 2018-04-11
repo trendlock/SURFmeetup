@@ -15,7 +15,60 @@ output:
 ```{r setup, include=FALSE}
 options(htmltools.dir.version = FALSE)
 options(width = 60)
+library(dev)
+library(plotly)
 ```
+
+
+---
+
+class:  middle
+
+# Motivation
+### - "Real World" data-sets often don't come pre-packaged
+
+
+---
+
+class:  middle
+
+# Motivation
+### - "Real World" data-sets often don't come pre-packaged
+### - Politics is public, and interesting
+
+
+---
+
+class:  middle
+
+# Motivation
+### - "Real World" data-sets often don't come pre-packaged
+### - Politics is public, and interesting
+### - This type of analysis yet to be done
+
+---
+
+![](images/Hansard.png)
+
+---
+
+![](images/OpenAusImmi.png)
+
+---
+![](images/TheyVote.png)
+
+---
+
+
+class: middle
+
+# Source
+
+### - Inspecting media pages (transcipts, media releases and opinion pieces)
+### - Engineering a method to systimaticall crawl the site
+### - Understanding the typical layout of a media page
+
+---
 
 
 ![](images/shorten_media.png)
@@ -25,25 +78,6 @@ options(width = 60)
 
 ![](images/turnbull_media.png)
 
-
----
-
-class:  middle
-
-# Motivation
-### - Accessing and cleaning data in the real world
-### - Wholistic, public, potential interest, SEARCHABLE, find events
-### - Endless analysis possible, just a start, eg "Driving Debate" or "Sentiment"
-
----
-
-class: middle
-
-# Source
-
-### - Inspecting media pages (transcipts, media releases and opinion pieces)
-### - Engineering a method to systimaticall crawl the site
-### - Understanding the typical layout of a media page
 
 ---
 class: middle
@@ -67,6 +101,7 @@ library(rvest)
 h <- read_html("html/shorten_transcipts.html")
 
 ```
+
 
 ```{r, echo=T, eval=F}
 library(rvest)
@@ -140,6 +175,7 @@ h
 
 
 ---
+
 class: middle
 
 # Processing/Cleaning
@@ -164,10 +200,123 @@ div class="headline">
 
 ---
 
-#### Aidans ratio method
+# Aidans ratio method
+
+### A way forward when you can't do Machine Learning
+
+---
+
+```{r, eval = TRUE, echo = F, cache=TRUE}
+x <- read_rds("data/meetup.rds")
+x %>% ungroup() %>%  select(row.num, raw) %>% head(n = 16) %>% knitr::kable(format = "html")
+```
+
+---
+
+
+```{r, eval = TRUE, echo = F, cache=TRUE}
+x %>% ungroup() %>%  select(row.num, raw) %>% filter(row.num > 16) %>% head(n = 16) %>% knitr::kable(format = "html")
+```
+
+---
+
+
+```{r, eval = TRUE, echo = F, cache=TRUE}
+x %>% ungroup() %>%  select(row.num, raw) %>% filter(row.num > 32) %>% head(n = 16) %>% knitr::kable(format = "html")
+```
+
+---
+
+```{r, eval = TRUE, echo = F, cache=TRUE}
+x %>% ungroup() %>%  select(row.num, raw) %>% filter(row.num > 48) %>% head(n = 16) %>% knitr::kable(format = "html")
+```
+
+---
+
+```{r, eval = TRUE, echo = F, cache=TRUE}
+x %>% ungroup() %>%  select(row.num, raw) %>% filter(row.num > 64) %>% head(n = 16) %>% knitr::kable(format = "html")
+```
+
+
+---
+
+```{r, eval = TRUE, echo = F, cache=TRUE}
+x %>% ungroup() %>%  select(row.num, raw) %>% filter(row.num > 80) %>% head(n = 16) %>% knitr::kable(format = "html")
+```
+
+---
+
+```{r, eval = TRUE, echo = F, cache=TRUE}
+x %>% ungroup() %>%  select(row.num, raw) %>% filter(row.num > 96) %>% head(n = 16) %>% knitr::kable(format = "html")
+```
+
+---
+
+```{r, eval = TRUE, echo = F, cache=TRUE}
+x %>% ungroup() %>%  select(row.num, raw) %>% filter(row.num > 112) %>% head(n = 16) %>% knitr::kable(format = "html")
+```
+
+---
+
+### First Plot in browser
+
+---
+
+```{r, eval = F, echo = T, cache=TRUE, fig.width = 10}
+
+df <- df %>%
+  mutate(is.text = case_when(!raw %in% stop_phrases &
+                                alpha.frac > 0.63 &
+                                special.frac > 0 &
+                                whitespace.frac > 0.07 &
+                                whitespace.frac > 0.7*special.frac &
+                                all.char.count >= 20 &
+                                raw != lead(raw) ~ TRUE ))
+
+```
+
+---
+
+```{r, eval = F, echo = T, cache=TRUE, fig.width = 10}
+
+df <- df %>%
+  mutate(tail = case_when((all.char.count < 26 &
+                             alpha.frac > .2 &
+                             !raw %in% stop_phrases &
+                             (special.frac + whitespace.frac) > 0 &
+                             special.count/all.char.count < 0.76 &
+                             raw != lead(raw) &
+                             is.na(url) == TRUE &
+                             is.na(is.text) == TRUE)|
+                            (alpha.frac > 0.63 &
+                               whitespace.frac > 0.07 &
+                               all.char.count >= 20 &
+                               raw != lead(raw) &
+                               !raw %in% stop_phrases &
+                               special.frac < 0.33 &
+                               numeric.frac < 0.01 &
+                               is.na(url) == TRUE &
+                               is.na(is.text) == TRUE)|
+                            (alpha.frac > 0.63 &
+                               all.char.count < 20 &
+                               raw != lead(raw) &
+                               special.frac < 0.33 &
+                               !raw %in% stop_phrases &
+                               (special.frac + whitespace.frac) > 0 &
+                               numeric.frac < 0.01 &
+                               is.na(url) == TRUE &
+                               is.na(is.text) == TRUE)~ TRUE))
+
+```
+
+---
+
+---
+
 #### boilerpipeR
 
 .footnote[[mannau/boilerpipeR](github.com/mannau/boilerpipeR)]
+
 ---
 
 ## Comparing methods
@@ -180,6 +329,7 @@ div class="headline">
 - Splitting a speech into sentences, phrases and words
 
 .footnote[[juliasilge/tidytext](github.com/juliasilge/tidytext)]
+
 ---
 
 ## Using Natural Language Processing (NLP)
@@ -218,6 +368,7 @@ orgs
 ```
 
 ---
+
 class: middle
 
 ## Sentiment Analysis
@@ -338,8 +489,233 @@ class: middle
 
 ### - Who drives debate?
 ### - Rural v Urban Language
-### - Sentiment
-### - Favouraite Phrases
+
+---
+class: middle
+# - Sentiment
+### Do politicians have visibly different moods when they talk about different things?
 
 ---
 
+```{r, eval = F, echo = T, cache=TRUE}
+test <- test %>%
+  mutate(sent.index = case_when(sentiment == "Very Negative" ~1,
+                                sentiment == "Negative" ~ 2,
+                                sentiment == "Neutral" ~ 3,
+                                sentiment == "Positive" ~ 4,
+                                sentiment == "Very Positive" ~ 5))
+
+testset <- c("sports", "cricket", "fair")
+
+sent.count <- test %>%
+  filter(phrase %in% testset) %>%
+  group_by(who, sent.index) %>%
+  summarise(count = sum(count))
+```
+
+---
+## Overall Sentiment of the the politicians
+```{r, eval = T, echo = T, cache=TRUE}
+
+read_rds("data/sent.overall.rds")
+
+```
+
+---
+
+## Sentiment about their parties
+```{r, eval = T, echo = T, cache=TRUE}
+
+read_rds("data/sent.parties.count.rds")
+
+```
+
+---
+## Sentiment about their parties
+```{r, eval = T, echo = T, cache=TRUE}
+
+read_rds("data/sent.parties.frac.rds")
+
+```
+
+---
+
+
+## Sentiment about Banks and Finance
+```{r, eval = T, echo = T, cache=TRUE}
+
+read_rds("data/sent.banks.count.rds")
+
+```
+
+---
+## Sentiment about Banks and Finance
+```{r, eval = T, echo = T, cache=TRUE}
+
+read_rds("data/sent.banks.frac.rds")
+
+```
+
+---
+
+
+
+## Sentiment about workers and unions
+```{r, eval = T, echo = T, cache=TRUE}
+
+read_rds("data/sent.workers.count.rds")
+
+```
+
+---
+## Sentiment about workers and unions
+```{r, eval = T, echo = T, cache=TRUE}
+
+read_rds("data/sent.workers.frac.rds")
+
+```
+
+---
+
+
+## Sentiment about other topics
+```{r, eval = T, echo = T, cache=TRUE}
+
+read_rds("data/sent.topics.count.rds")
+
+```
+
+---
+## Sentiment about other topics
+```{r, eval = T, echo = T, cache=TRUE}
+
+read_rds("data/sent.topics.frac.rds")
+
+```
+
+---
+---
+
+class: middle
+# - Favourite Phrases
+### define a 'phrase' - three or more words, can't all be stop-words
+### require them to be said at least 4 times (by anyone ever)
+
+---
+
+```{r, eval = TRUE, echo = F, cache=TRUE}
+df_phrase <- read_rds(find::this("/internal data storage/speech data/df_phrase2.rds"))
+
+df_phrase <- df_phrase %>% 
+  mutate(whitespace = str_count(phrase, pattern = " "))
+
+df_count <- df_phrase %>% 
+  filter(whitespace > 1) %>% 
+  filter(who %in% c("MT", "BS")) %>% 
+  group_by(phrase) %>% 
+  summarise(global.count = sum(count))
+
+df_phrase <- df_phrase %>% 
+  inner_join(df_count, by = "phrase")
+
+#df_phrase %>% head(n = 16) %>% knitr::kable(format = "html")
+```
+
+---
+
+
+```{r, eval = TRUE, echo = F, cache=TRUE}
+df_phrase %>% head(n = 16) %>% knitr::kable(format = "html")
+```
+
+---
+## Just focusing on Bill Shorten and Turnbull, and counting phrases by each speaker
+
+```{r, eval = TRUE, echo = T, cache=TRUE}
+
+df_count_speaker <- df_phrase %>% 
+  filter(whitespace > 1) %>% 
+  filter(who %in% c("MT", "BS")) %>%
+  group_by(phrase, who) %>% 
+  summarise(count.speaker = sum(count))
+
+df_count_speaker <- df_count_speaker %>% 
+  spread(key = who, value = count.speaker)
+```
+
+---
+
+```{r, eval = TRUE, echo = F, cache=TRUE}
+df_count_speaker %>% head(n = 16) %>% knitr::kable(format = "html")
+```
+
+---
+
+## Look at the top results from Turnbull, with more than double Shorten's count
+
+```{r, eval = TRUE, echo = T, cache=TRUE}
+
+df_count_MT <- df_count_speaker %>% 
+  arrange(desc(MT)) %>% 
+  head(n = 200) %>% 
+  filter(BS<0.5*MT)
+
+```
+
+---
+
+
+```{r, eval = TRUE, echo = T, cache=TRUE}
+df_count_MT %>% head(n = 16) %>% knitr::kable(format = "html")
+```
+
+---
+
+## Look at the top results from Shorten, with more than double Turnbull's count
+
+```{r, eval = TRUE, echo = T, cache=TRUE}
+
+df_count_BS <- df_count_speaker %>% 
+  arrange(desc(BS)) %>% 
+  head(n = 200) %>% 
+  filter(MT<0.5*BS)
+```
+
+---
+
+```{r, eval = TRUE, echo = T, cache=TRUE}
+
+df_count_BS %>% head(n = 16) %>% knitr::kable(format = "html")
+```
+
+
+---
+
+```{r, eval = F, echo = T, cache=TRUE}
+
+df_count_BS %>% 
+  head(n = 20) %>% 
+  ggplot(aes(y = BS, x = MT, label = phrase, size = BS))+
+  geom_text(check_overlap = T)+
+  #scale_size(limits = c(10,50))+
+  scale_y_continuous(limits = c(0,50))+
+  scale_x_continuous(limits = c(30,170))+
+  labs(title = "Bill Shorten's Favourites")
+
+```
+
+
+---
+
+```{r, eval = F, echo = T, cache=TRUE}
+
+df_count_MT %>% 
+  head(n = 20) %>% 
+  ggplot(aes(y = MT, x = BS, label = phrase, size = MT))+
+  geom_text(check_overlap = T)+
+  scale_y_continuous(limits = c(0,30))+
+  scale_x_continuous(limits = c(30,140))+
+  labs(title = "Malcom Turnbull Favourites")
+```
+
+---
