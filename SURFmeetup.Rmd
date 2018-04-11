@@ -464,7 +464,15 @@ class: middle, center
 
 ```{r, echo=F, warning=F, message=F, fig.width=10}
 library(ggridges)
-readr::read_rds("data/ridges_plot.rds")
+syd_df <- read_rds("data/ridges_plot.rds")
+ggplot(syd_df, aes(x = sent.lenth, y = label, fill = label)) +
+  geom_density_ridges() +
+  xlim(-10, 75) +
+  ylab("") +
+  xlab("Sentence Length") +
+  theme(legend.position = "none", text = element_text(size=20))
+
+
 ```
 
 
