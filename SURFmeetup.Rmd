@@ -15,6 +15,7 @@ output:
 ```{r setup, include=FALSE}
 options(htmltools.dir.version = FALSE)
 options(width = 60)
+library(tidyverse)
 ```
 
 
@@ -197,7 +198,33 @@ NumWordsRulesExtractor()
 - Tokenize a string
 - Splitting a speech into sentences, phrases and words
 
+```{r}
+library(tidytext)
+
+
+text_df <- tibble(
+  text = "We have to remember that Australia is part of a big integrated global economy."
+)
+```
+
+
 .footnote[[juliasilge/tidytext](github.com/juliasilge/tidytext)]
+---
+
+class: middle
+
+```{r}
+unnest_tokens(text_df, word, text)
+```
+
+---
+
+class: middle
+
+```{r}
+unnest_tokens(text_df, word, text, "ngrams", n = 3)
+```
+
 ---
 
 ## Using Natural Language Processing (NLP)
@@ -211,7 +238,7 @@ NumWordsRulesExtractor()
 ```{r, echo=F}
 people <- c("Anne Urquhart");
 orgs <- c("University of Tasmania")
-places <- c("Burnie", "Tasmania")
+places <- c("Burnie")
 ```
 ```{r, eval=F}
 person_ann <- Maxent_Entity_Annotator(kind = "person")
@@ -314,7 +341,7 @@ df_speech <- mutate(df_speech, who = case_when(
   str_detect(sent, "TURNBULL|PRIME MINISTER:") ~ "MT",
   str_detect(sent, "[[:upper:]]:") ~ "Other"
   )) %>% 
-  tidyr::fill(df_speech, who)
+  tidyr::fill(who)
 
 df_speech
 ```
@@ -326,9 +353,15 @@ class: middle
 
 # A useable data set!
 
-### - Features
-### - Scope
-### - Coverage/Quality
+
+- ~2500 speeches
+- going back 4 years
+
+- Features including:
+-- Speaker
+-- Location
+-- Date
+-- Sentiment
 
 ---
 class: middle
@@ -355,9 +388,29 @@ class: middle
 
 ---
 
+class: middle
+
+# Location Analysis
+
+
+```{r, eval=F}
+
+ggmap::geocode("Bega", source = "dsk")
+
+```
+```{r, echo=F}
+message("Information from URL : http://www.datasciencetoolkit.org/maps/api/geocode/json?address=Bega&sensor=false")
+
+tibble(lon = 149.8418, lat = -36.67392)
+```
+
+.footnote[[dkahle/ggmap](https://github.com/dkahle/ggmap)]
+
+---
+
 class: middle, center
 
-# Urban v Suburban/Regional
+# Australia
 
 ![](images/map.png)
 
@@ -388,7 +441,22 @@ class: middle, center
 
 ---
 
+class: middle, center
 
+# Sentence Length by Location 
+
+![](images/map sent loc.png)
+
+---
+
+class: middle, center
+
+# Sentence Length by Location 
+
+```{r, echo=F, warning=F, message=F, fig.width=10}
+library(ggridges)
+readr::read_rds("data/ridges_plot.rds")
+```
 
 
 
