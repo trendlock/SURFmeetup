@@ -196,12 +196,102 @@ div class="headline"&gt;
 
 ---
 
+class: middle
+
+
+```r
+library(boilerpipeR)
+
+DefaultExtractor()
+ArticleExtractor()
+KeepEverythingExtractor()
+LargestContentExtractor()
+NumWordsRulesExtractor()
+```
+
+
+
+---
+
 ## tidytext
 
 - Tokenize a string
 - Splitting a speech into sentences, phrases and words
 
+
+```r
+library(tidytext)
+
+
+text_df &lt;- tibble(
+  text = "We have to remember that Australia is part of a big integrated global economy."
+)
+```
+
+
 .footnote[[juliasilge/tidytext](github.com/juliasilge/tidytext)]
+---
+
+class: middle
+
+
+```r
+unnest_tokens(text_df, word, text)
+```
+
+```
+## # A tibble: 14 x 1
+##    word      
+##    &lt;chr&gt;     
+##  1 we        
+##  2 have      
+##  3 to        
+##  4 remember  
+##  5 that      
+##  6 australia 
+##  7 is        
+##  8 part      
+##  9 of        
+## 10 a         
+## 11 big       
+## 12 integrated
+## 13 global    
+## 14 economy
+```
+
+---
+
+class: middle
+
+
+```r
+unnest_tokens(text_df, word, text, "ngrams", n = 3)
+```
+
+```
+## # A tibble: 12 x 1
+##    word                     
+##    &lt;chr&gt;                    
+##  1 we have to               
+##  2 have to remember         
+##  3 to remember that         
+##  4 remember that australia  
+##  5 that australia is        
+##  6 australia is part        
+##  7 is part of               
+##  8 part of a                
+##  9 of a big                 
+## 10 a big integrated         
+## 11 big integrated global    
+## 12 integrated global economy
+```
+
+---
+
+class: middle, center
+
+![](images/explore.png)
+
 ---
 
 ## Using Natural Language Processing (NLP)
@@ -244,7 +334,7 @@ places
 ```
 
 ```
-## [1] "Burnie"   "Tasmania"
+## [1] "Burnie"
 ```
 
 ```r
@@ -347,29 +437,10 @@ df_speech &lt;- mutate(df_speech, who = case_when(
   str_detect(sent, "SHORTEN:") ~ "BS",
   str_detect(sent, "TURNBULL|PRIME MINISTER:") ~ "MT",
   str_detect(sent, "[[:upper:]]:") ~ "Other"
-  ))
+  )) %&gt;% 
+  tidyr::fill(who)
 
 df_speech
-```
-
-```
-## # A tibble: 5 x 2
-##   sent                                                who  
-##   &lt;chr&gt;                                               &lt;chr&gt;
-## 1 JOURNALIST: Would you like to see more companies w… Jrn  
-## 2 PRIME MINISTER: Visy has the opportunity to do so … MT   
-## 3 Is that the right term?                             &lt;NA&gt; 
-## 4 ANTHONY PRATT: Lignin, yeah.                        Other
-## 5 PRIME MINISTER: Lignin which is the by-product of … MT
-```
-
----
-
-class: middle
-
-
-```r
-tidyr::fill(df_speech, who) 
 ```
 
 ```
@@ -390,9 +461,15 @@ class: middle
 
 # A useable data set!
 
-### - Features
-### - Scope
-### - Coverage/Quality
+
+- ~2500 speeches
+- going back 4 years
+
+- Features including:
+-- Speaker
+-- Location
+-- Date
+-- Sentiment
 
 ---
 class: middle
@@ -412,9 +489,88 @@ class: middle
 # Analysis
 
 ### - Who drives debate?
-### - Rural v Urban Language
+### - Language and Location
+
 ### - Sentiment
 ### - Favouraite Phrases
+
+---
+
+class: middle
+
+# Location Analysis
+
+
+
+```r
+ggmap::geocode("Bega", source = "dsk")
+```
+
+
+```
+## Information from URL : http://www.datasciencetoolkit.org/maps/
+## api/geocode/json?address=Bega&amp;sensor=false
+```
+
+```
+## # A tibble: 1 x 2
+##     lon   lat
+##   &lt;dbl&gt; &lt;dbl&gt;
+## 1  150. -36.7
+```
+
+.footnote[[dkahle/ggmap](https://github.com/dkahle/ggmap)]
+
+---
+
+class: middle, center
+
+# Australia
+
+![](images/map.png)
+
+---
+
+class: middle, center
+
+# Melbourne
+
+![](images/melb_0.png)
+
+---
+
+class: middle, center
+
+# Melbourne
+
+![](images/melb_1.png)
+
+
+---
+
+class: middle, center
+
+# Melbourne
+
+![](images/melb_2.png)
+
+---
+
+class: middle, center
+
+# Sentence Length by Location 
+
+![](images/map sent loc.png)
+
+---
+
+class: middle, center
+
+# Sentence Length by Location 
+
+![](SURFmeetup_files/figure-html/unnamed-chunk-27-1.png)&lt;!-- --&gt;
+
+
 
 ---
     </textarea>
