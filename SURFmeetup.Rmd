@@ -515,10 +515,14 @@ sent.count <- test %>%
 
 ---
 ## Overall Sentiment of the the politicians
-```{r, eval = T, echo = T, cache=TRUE}
+```{r, eval = T, echo = F, cache=TRUE}
 
-read_rds("data/sent.overall.rds")
+sent.count <- read_rds("data/sent.count.overall.rds")
 
+sent.count %>%
+  filter(who %in% c("BS", "MT", "Jrn", "Other")) %>%
+  ggplot(aes(x = as.factor(who), y = frac, fill =  as.factor(sent.index)))+
+  geom_bar(stat = "identity")
 ```
 
 ---
@@ -526,7 +530,14 @@ read_rds("data/sent.overall.rds")
 ## Sentiment about their parties
 ```{r, eval = T, echo = T, cache=TRUE}
 
-read_rds("data/sent.parties.count.rds")
+sent.count.phrase <- read_rds("data/sent.parties.count.rds")
+
+sent.count.phrase %>%
+  filter(who %in% c("BS", "MT", "Jrn")) %>%
+  ggplot(aes(x = phrase, y = count.phrase, fill = as.factor(sent.index)))+
+  geom_bar(stat = "identity")+
+  facet_grid(who~.)
+
 
 ```
 
@@ -534,7 +545,14 @@ read_rds("data/sent.parties.count.rds")
 ## Sentiment about their parties
 ```{r, eval = T, echo = T, cache=TRUE}
 
-read_rds("data/sent.parties.frac.rds")
+sent.count.phrase <- read_rds("data/sent.parties.frac.rds")
+
+sent.count.phrase %>%
+  filter(who %in% c("BS", "MT", "Jrn")) %>%
+  ggplot(aes(x = phrase, y = frac, fill = as.factor(sent.index)))+
+  geom_bar(stat = "identity")+
+  facet_grid(who~.)
+
 
 ```
 
@@ -544,7 +562,14 @@ read_rds("data/sent.parties.frac.rds")
 ## Sentiment about Banks and Finance
 ```{r, eval = T, echo = T, cache=TRUE}
 
-read_rds("data/sent.banks.count.rds")
+sent.count.phrase <- read_rds("data/sent.banks.count.rds")
+
+sent.count.phrase %>%
+  filter(who %in% c("BS", "MT", "Jrn")) %>%
+  ggplot(aes(x = phrase, y = count.phrase, fill = as.factor(sent.index)))+
+  geom_bar(stat = "identity")+
+  facet_grid(who~.)
+
 
 ```
 
@@ -552,7 +577,14 @@ read_rds("data/sent.banks.count.rds")
 ## Sentiment about Banks and Finance
 ```{r, eval = T, echo = T, cache=TRUE}
 
-read_rds("data/sent.banks.frac.rds")
+sent.count.phrase <- read_rds("data/sent.banks.frac.rds")
+
+sent.count.phrase %>%
+  filter(who %in% c("BS", "MT", "Jrn")) %>%
+  ggplot(aes(x = phrase, y = frac, fill = as.factor(sent.index)))+
+  geom_bar(stat = "identity")+
+  facet_grid(who~.)
+
 
 ```
 
@@ -563,7 +595,13 @@ read_rds("data/sent.banks.frac.rds")
 ## Sentiment about workers and unions
 ```{r, eval = T, echo = T, cache=TRUE}
 
-read_rds("data/sent.workers.count.rds")
+sent.count.phrase <-read_rds("data/sent.workers.count.rds")
+
+sent.count.phrase %>%
+  filter(who %in% c("BS", "MT", "Jrn")) %>%
+  ggplot(aes(x = phrase, y = count.phrase, fill = as.factor(sent.index)))+
+  geom_bar(stat = "identity")+
+  facet_grid(who~.)
 
 ```
 
@@ -571,26 +609,42 @@ read_rds("data/sent.workers.count.rds")
 ## Sentiment about workers and unions
 ```{r, eval = T, echo = T, cache=TRUE}
 
-read_rds("data/sent.workers.frac.rds")
+sent.count.phrase <-read_rds("data/sent.workers.frac.rds")
 
+sent.count.phrase %>%
+  filter(who %in% c("BS", "MT", "Jrn")) %>%
+  ggplot(aes(x = phrase, y = frac, fill = as.factor(sent.index)))+
+  geom_bar(stat = "identity")+
+  facet_grid(who~.)
 ```
 
 ---
 
 
 ## Sentiment about other topics
-```{r, eval = T, echo = T, cache=TRUE}
+```{r, eval = T, echo = F, cache=TRUE}
 
-read_rds("data/sent.topics.count.rds")
+sent.count.phrase <- read_rds("data/sent.topics.count.rds")
+
+sent.count.phrase %>%
+  filter(who %in% c("BS", "MT", "Jrn")) %>%
+  ggplot(aes(x = phrase, y = count.phrase, fill = as.factor(sent.index)))+
+  geom_bar(stat = "identity")+
+  facet_grid(who~.)
 
 ```
 
 ---
 ## Sentiment about other topics
-```{r, eval = T, echo = T, cache=TRUE}
+```{r, eval = T, echo = F, cache=TRUE}
 
-read_rds("data/sent.topics.frac.rds")
+sent.count.phrase <- read_rds("data/sent.topics.count.rds")
 
+sent.count.phrase %>%
+  filter(who %in% c("BS", "MT", "Jrn")) %>%
+  ggplot(aes(x = phrase, y = frac, fill = as.factor(sent.index)))+
+  geom_bar(stat = "identity")+
+  facet_grid(who~.)
 ```
 
 ---
