@@ -227,6 +227,12 @@ unnest_tokens(text_df, word, text, "ngrams", n = 3)
 
 ---
 
+class: middle, center
+
+![](images/explore.png)
+
+---
+
 ## Using Natural Language Processing (NLP)
 
 - Named Entity Recognition (NER)
@@ -355,6 +361,7 @@ class: middle
 
 
 - ~2500 speeches
+- ~130,000 sentences
 - going back 4 years
 
 - Features including:
@@ -398,8 +405,10 @@ class: middle
 ggmap::geocode("Bega", source = "dsk")
 
 ```
+
 ```{r, echo=F}
-message("Information from URL : http://www.datasciencetoolkit.org/maps/api/geocode/json?address=Bega&sensor=false")
+message(glue::glue("Information from URL : http://www.datasciencetoolkit.org/maps/
+                   api/geocode/json?address=Bega&sensor=false"))
 
 tibble(lon = 149.8418, lat = -36.67392)
 ```
