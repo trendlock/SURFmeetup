@@ -739,7 +739,25 @@ df_count_BS <- df_count_speaker %>%
 
 ```{r, eval = TRUE, echo = T, cache=TRUE}
 
+
 df_count_BS %>% head(n = 16) %>% knitr::kable(format = "html")
+```
+
+----
+
+
+```{r, echo=F, warning=F, message=F, fig.width=10}
+library(ggridges)
+syd_df <- read_rds("data/ridges_plot.rds")
+ggplot(syd_df, aes(x = sent.lenth, y = label, fill = label)) +
+  geom_density_ridges() +
+  xlim(-10, 75) +
+  ylab("") +
+  xlab("Sentence Length") +
+  theme(legend.position = "none", text = element_text(size=20))
+
+
+
 ```
 
 
