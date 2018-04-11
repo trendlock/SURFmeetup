@@ -15,7 +15,7 @@ output:
 ```{r setup, include=FALSE}
 options(htmltools.dir.version = FALSE)
 options(width = 60)
-library(tidyverse)
+library(dev)
 library(plotly)
 ```
 
@@ -323,62 +323,12 @@ df <- df %>%
 
 ---
 
-class: middle
-
-```{r, eval=F}
-
-library(boilerpipeR)
-
-DefaultExtractor()
-ArticleExtractor()
-KeepEverythingExtractor()
-LargestContentExtractor()
-NumWordsRulesExtractor()
-
-```
-
-
-
----
-
 ## tidytext
 
 - Tokenize a string
 - Splitting a speech into sentences, phrases and words
 
-```{r}
-library(tidytext)
-
-
-text_df <- tibble(
-  text = "We have to remember that Australia is part of a big integrated global economy."
-)
-```
-
-
 .footnote[[juliasilge/tidytext](github.com/juliasilge/tidytext)]
-
----
-
-class: middle
-
-```{r}
-unnest_tokens(text_df, word, text)
-```
-
----
-
-class: middle
-
-```{r}
-unnest_tokens(text_df, word, text, "ngrams", n = 3)
-```
-
----
-
-class: middle, center
-
-![](images/explore.png)
 
 ---
 
@@ -393,7 +343,7 @@ class: middle, center
 ```{r, echo=F}
 people <- c("Anne Urquhart");
 orgs <- c("University of Tasmania")
-places <- c("Burnie")
+places <- c("Burnie", "Tasmania")
 ```
 ```{r, eval=F}
 person_ann <- Maxent_Entity_Annotator(kind = "person")
@@ -496,10 +446,17 @@ df_speech <- mutate(df_speech, who = case_when(
   str_detect(sent, "SHORTEN:") ~ "BS",
   str_detect(sent, "TURNBULL|PRIME MINISTER:") ~ "MT",
   str_detect(sent, "[[:upper:]]:") ~ "Other"
-  )) %>% 
-  tidyr::fill(who)
+  ))
 
 df_speech
+```
+
+---
+
+class: middle
+
+```{r}
+tidyr::fill(df_speech, who) 
 ```
 
 
@@ -509,16 +466,9 @@ class: middle
 
 # A useable data set!
 
-
-- ~2500 speeches
-- ~130,000 sentences
-- going back 4 years
-
-- Features including:
--- Speaker
--- Location
--- Date
--- Sentiment
+### - Features
+### - Scope
+### - Coverage/Quality
 
 ---
 class: middle
@@ -538,9 +488,7 @@ class: middle
 # Analysis
 
 ### - Who drives debate?
-### - Language and Location
-### - Sentiment
-### - Favouraite Phrases
+### - Rural v Urban Language
 
 ---
 class: middle
@@ -743,7 +691,7 @@ df_count_BS %>% head(n = 16) %>% knitr::kable(format = "html")
 
 ---
 
-```{r, eval = F, echo = T, cache=TRUE}
+```{r, eval = T, echo = T, cache=TRUE}
 
 df_count_BS %>% 
   head(n = 20) %>% 
@@ -759,7 +707,7 @@ df_count_BS %>%
 
 ---
 
-```{r, eval = F, echo = T, cache=TRUE}
+```{r, eval = T, echo = T, cache=TRUE}
 
 df_count_MT %>% 
   head(n = 20) %>% 
@@ -770,82 +718,4 @@ df_count_MT %>%
   labs(title = "Malcom Turnbull Favourites")
 ```
 
-
 ---
-
-class: middle
-
-# Location Analysis
-
-
-```{r, eval=F}
-
-ggmap::geocode("Bega", source = "dsk")
-
-```
-
-```{r, echo=F}
-message(glue::glue("Information from URL : http://www.datasciencetoolkit.org/maps/
-                   api/geocode/json?address=Bega&sensor=false"))
-
-tibble(lon = 149.8418, lat = -36.67392)
-```
-
-.footnote[[dkahle/ggmap](https://github.com/dkahle/ggmap)]
-
----
-
-class: middle, center
-
-# Australia
-
-![](images/map.png)
-
----
-
-class: middle, center
-
-# Melbourne
-
-![](images/melb_0.png)
-
----
-
-class: middle, center
-
-# Melbourne
-
-![](images/melb_1.png)
-
-
----
-
-class: middle, center
-
-# Melbourne
-
-![](images/melb_2.png)
-
----
-
-class: middle, center
-
-# Sentence Length by Location 
-
-![](images/map sent loc.png)
-
----
-
-class: middle, center
-
-# Sentence Length by Location 
-
-```{r, echo=F, warning=F, message=F, fig.width=10}
-library(ggridges)
-readr::read_rds("data/ridges_plot.rds")
-```
-
-
-
----
-
