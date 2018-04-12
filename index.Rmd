@@ -15,7 +15,10 @@ output:
 ```{r setup, include=FALSE}
 options(htmltools.dir.version = FALSE)
 options(width = 60)
-library(dev)
+
+
+library(tidyverse)
+library(lubridate)
 library(plotly)
 ```
 
@@ -825,7 +828,7 @@ df_count_BS <- df_count_speaker %>%
 ---
 
 
-```{r, eval = TRUE, echo = F, cache=TRUE}
+```{r, eval = TRUE, echo = F}
 df_count_MT %>% head(n = 16) %>% knitr::kable(format = "html")
 ```
 
@@ -833,7 +836,7 @@ df_count_MT %>% head(n = 16) %>% knitr::kable(format = "html")
 
 ---
 
-```{r, eval = TRUE, echo = F, cache=TRUE}
+```{r, eval = TRUE, echo = F}
 
 
 df_count_BS %>% head(n = 16) %>% knitr::kable(format = "html")
