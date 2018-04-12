@@ -2,7 +2,7 @@
 
 A presentation by Aidan Morrison and Ross Ireland. 
 
-Presentation: [](https://trendlock-surf-meetup.netlify.com/)
+Presentation: [https://trendlock-surf-meetup.netlify.com/](https://trendlock-surf-meetup.netlify.com/)
 
 ## *Turning Turnbull and Shorten into data*
 
