@@ -65,7 +65,7 @@ class: middle
 # Source
 
 ### - Inspecting media pages (transcipts, media releases and opinion pieces)
-### - Engineering a method to systimaticall crawl the site
+### - Engineering a method to systimatically crawl the site
 ### - Understanding the typical layout of a media page
 
 ---
@@ -91,7 +91,7 @@ class: middle
 - googleCloudStorageR
 
 
-.footnote[[hadley/rvest](github.com/hadley/rvest)  -  [cloudyr](github.com/cloudyr)]
+.footnote[[hadley/rvest](https://github.com/hadley/rvest)  -  [cloudyr](https://github.com/cloudyr)]
 
 ---
 class: middle
@@ -173,6 +173,7 @@ h
 ```
 
 
+.footnote[[tidyverse/purrr](https://github.com/tidyverse/purrr)]
 
 ---
 
@@ -206,7 +207,7 @@ div class="headline">
 
 ---
 
-```{r, eval = TRUE, echo = F, cache=TRUE}
+```{r, eval = TRUE, echo = F}
 x <- read_rds("data/meetup.rds")
 x %>% ungroup() %>%  select(row.num, raw) %>% head(n = 16) %>% knitr::kable(format = "html")
 ```
@@ -214,45 +215,45 @@ x %>% ungroup() %>%  select(row.num, raw) %>% head(n = 16) %>% knitr::kable(form
 ---
 
 
-```{r, eval = TRUE, echo = F, cache=TRUE}
+```{r, eval = TRUE, echo = F}
 x %>% ungroup() %>%  select(row.num, raw) %>% filter(row.num > 16) %>% head(n = 16) %>% knitr::kable(format = "html")
 ```
 
 ---
 
 
-```{r, eval = TRUE, echo = F, cache=TRUE}
+```{r, eval = TRUE, echo = F}
 x %>% ungroup() %>%  select(row.num, raw) %>% filter(row.num > 32) %>% head(n = 16) %>% knitr::kable(format = "html")
 ```
 
 ---
 
-```{r, eval = TRUE, echo = F, cache=TRUE}
+```{r, eval = TRUE, echo = F}
 x %>% ungroup() %>%  select(row.num, raw) %>% filter(row.num > 48) %>% head(n = 16) %>% knitr::kable(format = "html")
 ```
 
 ---
 
-```{r, eval = TRUE, echo = F, cache=TRUE}
+```{r, eval = TRUE, echo = F}
 x %>% ungroup() %>%  select(row.num, raw) %>% filter(row.num > 64) %>% head(n = 16) %>% knitr::kable(format = "html")
 ```
 
 
 ---
 
-```{r, eval = TRUE, echo = F, cache=TRUE}
+```{r, eval = TRUE, echo = F}
 x %>% ungroup() %>%  select(row.num, raw) %>% filter(row.num > 80) %>% head(n = 16) %>% knitr::kable(format = "html")
 ```
 
 ---
 
-```{r, eval = TRUE, echo = F, cache=TRUE}
+```{r, eval = TRUE, echo = F}
 x %>% ungroup() %>%  select(row.num, raw) %>% filter(row.num > 96) %>% head(n = 16) %>% knitr::kable(format = "html")
 ```
 
 ---
 
-```{r, eval = TRUE, echo = F, cache=TRUE}
+```{r, eval = TRUE, echo = F}
 x %>% ungroup() %>%  select(row.num, raw) %>% filter(row.num > 112) %>% head(n = 16) %>% knitr::kable(format = "html")
 ```
 
@@ -262,7 +263,7 @@ x %>% ungroup() %>%  select(row.num, raw) %>% filter(row.num > 112) %>% head(n =
 
 ---
 
-```{r, eval = F, echo = T, cache=TRUE, fig.width = 10}
+```{r, eval = F, echo = T, fig.width = 10}
 
 df <- df %>%
   mutate(is.text = case_when(!raw %in% stop_phrases &
@@ -277,7 +278,7 @@ df <- df %>%
 
 ---
 
-```{r, eval = F, echo = T, cache=TRUE, fig.width = 10}
+```{r, eval = F, echo = T, fig.width = 10}
 
 df <- df %>%
   mutate(tail = case_when((all.char.count < 26 &
@@ -311,24 +312,63 @@ df <- df %>%
 
 ---
 
+
+# boilerpipeR
+
+```{r, eval=F}
+
+library(boilerpipeR)
+
+DefaultExtractor()
+ArticleExtractor()
+KeepEverythingExtractor()
+LargestContentExtractor()
+NumWordsRulesExtractor()
+
+```
+
+.footnote[[mannau/boilerpipeR](https://github.com/mannau/boilerpipeR)]
+
 ---
 
-#### boilerpipeR
-
-.footnote[[mannau/boilerpipeR](github.com/mannau/boilerpipeR)]
-
----
-
-## Comparing methods
-
----
-
-## tidytext
+# tidytext
 
 - Tokenize a string
 - Splitting a speech into sentences, phrases and words
 
-.footnote[[juliasilge/tidytext](github.com/juliasilge/tidytext)]
+```{r}
+library(tidytext)
+
+
+text_df <- tibble(
+  text = "We have to remember that Australia is part of a big integrated global economy."
+)
+```
+
+
+.footnote[[juliasilge/tidytext](https://github.com/juliasilge/tidytext)]
+---
+
+class: middle
+
+```{r}
+unnest_tokens(text_df, word, text)
+```
+
+---
+
+class: middle
+
+```{r}
+unnest_tokens(text_df, word, text, "ngrams", n = 3)
+```
+
+---
+
+
+class: middle, center
+
+![](images/explore.png)
 
 ---
 
@@ -446,19 +486,11 @@ df_speech <- mutate(df_speech, who = case_when(
   str_detect(sent, "SHORTEN:") ~ "BS",
   str_detect(sent, "TURNBULL|PRIME MINISTER:") ~ "MT",
   str_detect(sent, "[[:upper:]]:") ~ "Other"
-  ))
+  )) %>% 
+  tidyr::fill( who)
 
 df_speech
 ```
-
----
-
-class: middle
-
-```{r}
-tidyr::fill(df_speech, who) 
-```
-
 
 ---
 class: middle
@@ -466,11 +498,18 @@ class: middle
 
 # A useable data set!
 
-### - Features
-### - Scope
-### - Coverage/Quality
+- ~2500 speeches
+- ~130,000 sentences
+- going back 4 years
+
+### Features including:
+- Speaker
+- Location
+- Date
+- Sentiment
 
 ---
+
 class: middle
 
 # Visualisation and Exloration Tools
@@ -480,24 +519,97 @@ class: middle
 ### - leaflet (interactive maps)
 
 .footnote[
-[rstudio/shiny](http://github.com/rstudio/shiny) - [ropensci/plotly](http://github.com/ropensci/plotly) - [rstudio/leaflet](http://github.com/rstudio/leaflet)]
+[rstudio/shiny](https://github.com/rstudio/shiny) - [ropensci/plotly](https://github.com/ropensci/plotly) - [rstudio/leaflet](https://github.com/rstudio/leaflet)]
+
 ---
 
 class: middle
 
-# Analysis
+# Location Analysis
 
-### - Who drives debate?
-### - Rural v Urban Language
+
+```{r, eval=F}
+
+ggmap::geocode("Bega", source = "dsk")
+
+```
+
+```{r, echo=F}
+message(glue::glue("Information from URL : http://www.datasciencetoolkit.org/maps/
+                   api/geocode/json?address=Bega&sensor=false"))
+
+tibble(lon = 149.8418, lat = -36.67392)
+```
+
+.footnote[[dkahle/ggmap](https://github.com/dkahle/ggmap)]
 
 ---
-class: middle
-# - Sentiment
-### Do politicians have visibly different moods when they talk about different things?
+
+class: middle, center
+
+# Australia
+
+![](images/map.png)
 
 ---
 
-```{r, eval = F, echo = T, cache=TRUE}
+class: middle, center
+
+# Melbourne
+
+![](images/melb_0.png)
+
+---
+
+class: middle, center
+
+# Melbourne
+
+![](images/melb_1.png)
+
+
+---
+
+class: middle, center
+
+# Melbourne
+
+![](images/melb_2.png)
+
+---
+
+class: middle, center
+
+# Sentence Length by Location 
+
+![](images/map sent loc.png)
+
+---
+
+class: middle, center
+
+# Sentence Length by Location 
+
+```{r, echo=F, warning=F, message=F, fig.width=10}
+library(ggridges)
+syd_df <- read_rds("data/ridges_plot.rds")
+ggplot(syd_df, aes(x = sent.lenth, y = label, fill = label)) +
+  geom_density_ridges() +
+  xlim(-10, 75) +
+  ylab("") +
+  xlab("Sentence Length") +
+  theme(legend.position = "none", text = element_text(size=20))
+
+
+```
+
+
+
+---
+
+# Sentiment
+
+```{r, eval = F, echo = T}
 test <- test %>%
   mutate(sent.index = case_when(sentiment == "Very Negative" ~1,
                                 sentiment == "Negative" ~ 2,
@@ -514,21 +626,23 @@ sent.count <- test %>%
 ```
 
 ---
+
 ## Overall Sentiment of the the politicians
-```{r, eval = T, echo = F, cache=TRUE}
+```{r, eval = T, echo = F, fig.width = 10}
 
 sent.count <- read_rds("data/sent.count.overall.rds")
 
 sent.count %>%
   filter(who %in% c("BS", "MT", "Jrn", "Other")) %>%
   ggplot(aes(x = as.factor(who), y = frac, fill =  as.factor(sent.index)))+
-  geom_bar(stat = "identity")
+  geom_bar(stat = "identity")+
+  theme(text = element_text(size=20))
 ```
 
 ---
 
 ## Sentiment about their parties
-```{r, eval = T, echo = T, cache=TRUE}
+```{r, eval = T, echo = F, fig.width = 10}
 
 sent.count.phrase <- read_rds("data/sent.parties.count.rds")
 
@@ -536,31 +650,18 @@ sent.count.phrase %>%
   filter(who %in% c("BS", "MT", "Jrn")) %>%
   ggplot(aes(x = phrase, y = count.phrase, fill = as.factor(sent.index)))+
   geom_bar(stat = "identity")+
-  facet_grid(who~.)
+  facet_grid(who~.)+
+  theme(text = element_text(size=20))
 
 
 ```
 
----
-## Sentiment about their parties
-```{r, eval = T, echo = T, cache=TRUE}
-
-sent.count.phrase <- read_rds("data/sent.parties.frac.rds")
-
-sent.count.phrase %>%
-  filter(who %in% c("BS", "MT", "Jrn")) %>%
-  ggplot(aes(x = phrase, y = frac, fill = as.factor(sent.index)))+
-  geom_bar(stat = "identity")+
-  facet_grid(who~.)
-
-
-```
 
 ---
 
 
 ## Sentiment about Banks and Finance
-```{r, eval = T, echo = T, cache=TRUE}
+```{r, eval = T, echo = F, fig.width = 10}
 
 sent.count.phrase <- read_rds("data/sent.banks.count.rds")
 
@@ -568,32 +669,33 @@ sent.count.phrase %>%
   filter(who %in% c("BS", "MT", "Jrn")) %>%
   ggplot(aes(x = phrase, y = count.phrase, fill = as.factor(sent.index)))+
   geom_bar(stat = "identity")+
-  facet_grid(who~.)
+  facet_grid(who~.) +
+  theme(text = element_text(size=20))
 
 
 ```
 
 ---
-## Sentiment about Banks and Finance
-```{r, eval = T, echo = T, cache=TRUE}
 
-sent.count.phrase <- read_rds("data/sent.banks.frac.rds")
+## Sentiment about Banks and Finance
+```{r, eval = T, echo = F, fig.width = 10}
+
+sent.count.phrase <- read_rds("data/sent.banks.count.rds")
 
 sent.count.phrase %>%
   filter(who %in% c("BS", "MT", "Jrn")) %>%
   ggplot(aes(x = phrase, y = frac, fill = as.factor(sent.index)))+
   geom_bar(stat = "identity")+
-  facet_grid(who~.)
+  facet_grid(who~.)+
+  theme(text = element_text(size=20))
 
 
 ```
 
 ---
 
-
-
 ## Sentiment about workers and unions
-```{r, eval = T, echo = T, cache=TRUE}
+```{r, eval = T, echo = F, fig.width = 10}
 
 sent.count.phrase <-read_rds("data/sent.workers.count.rds")
 
@@ -601,28 +703,31 @@ sent.count.phrase %>%
   filter(who %in% c("BS", "MT", "Jrn")) %>%
   ggplot(aes(x = phrase, y = count.phrase, fill = as.factor(sent.index)))+
   geom_bar(stat = "identity")+
-  facet_grid(who~.)
+  facet_grid(who~.)+
+  theme(text = element_text(size=20))
 
 ```
 
 ---
-## Sentiment about workers and unions
-```{r, eval = T, echo = T, cache=TRUE}
 
-sent.count.phrase <-read_rds("data/sent.workers.frac.rds")
+## Sentiment about workers and unions
+```{r, eval = T, echo = F, fig.width = 10}
+
+sent.count.phrase <-read_rds("data/sent.workers.count.rds")
 
 sent.count.phrase %>%
   filter(who %in% c("BS", "MT", "Jrn")) %>%
   ggplot(aes(x = phrase, y = frac, fill = as.factor(sent.index)))+
   geom_bar(stat = "identity")+
-  facet_grid(who~.)
+  facet_grid(who~.)+
+  theme(text = element_text(size=20))
 ```
 
 ---
 
 
 ## Sentiment about other topics
-```{r, eval = T, echo = F, cache=TRUE}
+```{r, eval = T, echo = F, fig.width = 10}
 
 sent.count.phrase <- read_rds("data/sent.topics.count.rds")
 
@@ -630,13 +735,15 @@ sent.count.phrase %>%
   filter(who %in% c("BS", "MT", "Jrn")) %>%
   ggplot(aes(x = phrase, y = count.phrase, fill = as.factor(sent.index)))+
   geom_bar(stat = "identity")+
-  facet_grid(who~.)
+  facet_grid(who~.)+
+  theme(text = element_text(size=20))
 
 ```
 
 ---
+
 ## Sentiment about other topics
-```{r, eval = T, echo = F, cache=TRUE}
+```{r, eval = T, echo = F, fig.width = 10}
 
 sent.count.phrase <- read_rds("data/sent.topics.count.rds")
 
@@ -644,10 +751,11 @@ sent.count.phrase %>%
   filter(who %in% c("BS", "MT", "Jrn")) %>%
   ggplot(aes(x = phrase, y = frac, fill = as.factor(sent.index)))+
   geom_bar(stat = "identity")+
-  facet_grid(who~.)
+  facet_grid(who~.)+
+  theme(text = element_text(size=20))
 ```
 
----
+
 ---
 
 class: middle
@@ -655,9 +763,8 @@ class: middle
 ### define a 'phrase' - three or more words, can't all be stop-words
 ### require them to be said at least 4 times (by anyone ever)
 
----
 
-```{r, eval = TRUE, echo = F, cache=TRUE}
+```{r, eval = TRUE, echo = F}
 df_phrase <- read_rds(find::this("/internal data storage/speech data/df_phrase2.rds"))
 
 df_phrase <- df_phrase %>% 
@@ -677,15 +784,9 @@ df_phrase <- df_phrase %>%
 
 ---
 
-
-```{r, eval = TRUE, echo = F, cache=TRUE}
-df_phrase %>% head(n = 16) %>% knitr::kable(format = "html")
-```
-
----
 ## Just focusing on Bill Shorten and Turnbull, and counting phrases by each speaker
 
-```{r, eval = TRUE, echo = T, cache=TRUE}
+```{r, eval = TRUE, echo = T, fig.width = 10}
 
 df_count_speaker <- df_phrase %>% 
   filter(whitespace > 1) %>% 
@@ -699,15 +800,9 @@ df_count_speaker <- df_count_speaker %>%
 
 ---
 
-```{r, eval = TRUE, echo = F, cache=TRUE}
-df_count_speaker %>% head(n = 16) %>% knitr::kable(format = "html")
-```
-
----
-
 ## Look at the top results from Turnbull, with more than double Shorten's count
 
-```{r, eval = TRUE, echo = T, cache=TRUE}
+```{r, eval = TRUE, echo = T}
 
 df_count_MT <- df_count_speaker %>% 
   arrange(desc(MT)) %>% 
@@ -716,18 +811,8 @@ df_count_MT <- df_count_speaker %>%
 
 ```
 
----
 
-
-```{r, eval = TRUE, echo = T, cache=TRUE}
-df_count_MT %>% head(n = 16) %>% knitr::kable(format = "html")
-```
-
----
-
-## Look at the top results from Shorten, with more than double Turnbull's count
-
-```{r, eval = TRUE, echo = T, cache=TRUE}
+```{r, eval = TRUE, echo = F}
 
 df_count_BS <- df_count_speaker %>% 
   arrange(desc(BS)) %>% 
@@ -735,59 +820,63 @@ df_count_BS <- df_count_speaker %>%
   filter(MT<0.5*BS)
 ```
 
+
+
 ---
 
-```{r, eval = TRUE, echo = T, cache=TRUE}
+
+```{r, eval = TRUE, echo = F, cache=TRUE}
+df_count_MT %>% head(n = 16) %>% knitr::kable(format = "html")
+```
+
+
+
+---
+
+```{r, eval = TRUE, echo = F, cache=TRUE}
 
 
 df_count_BS %>% head(n = 16) %>% knitr::kable(format = "html")
 ```
 
-----
-
-
-```{r, echo=F, warning=F, message=F, fig.width=10}
-library(ggridges)
-syd_df <- read_rds("data/ridges_plot.rds")
-ggplot(syd_df, aes(x = sent.lenth, y = label, fill = label)) +
-  geom_density_ridges() +
-  xlim(-10, 75) +
-  ylab("") +
-  xlab("Sentence Length") +
-  theme(legend.position = "none", text = element_text(size=20))
-
-
-
-```
-
-
 ---
 
-```{r, eval = T, echo = T, cache=TRUE}
+```{r, eval = T, echo = F, fig.width = 10}
 
 df_count_BS %>% 
   head(n = 20) %>% 
   ggplot(aes(y = BS, x = MT, label = phrase, size = BS))+
   geom_text(check_overlap = T)+
   #scale_size(limits = c(10,50))+
-  scale_y_continuous(limits = c(0,50))+
-  scale_x_continuous(limits = c(30,170))+
-  labs(title = "Bill Shorten's Favourites")
+  scale_x_continuous(limits = c(0,50))+
+  scale_y_continuous(limits = c(30,170))+
+  labs(title = "Bill Shorten's Favourites")+
+  theme(text = element_text(size=20))
 
 ```
 
-
 ---
 
-```{r, eval = T, echo = T, cache=TRUE}
+```{r, eval = T, echo = F, fig.width = 10}
 
 df_count_MT %>% 
   head(n = 20) %>% 
   ggplot(aes(y = MT, x = BS, label = phrase, size = MT))+
   geom_text(check_overlap = T)+
-  scale_y_continuous(limits = c(0,30))+
-  scale_x_continuous(limits = c(30,140))+
-  labs(title = "Malcom Turnbull Favourites")
+  scale_x_continuous(limits = c(0,30))+
+  scale_y_continuous(limits = c(30,140))+
+  labs(title = "Malcom Turnbull Favourites")+
+  theme(text = element_text(size=20))
 ```
 
 ---
+
+class: middle, center
+
+# Thanks!
+
+## Aidan Morrison
+## [@QuixoticQuant](https://twitter.com/quixoticquant?lang=en)
+
+## Ross Ireland
+## [@RossTrendlock](https://twitter.com/rosstrendlock?lang=en)

@@ -20,12 +20,12 @@ class: center, middle, inverse, title-slide
 
 
 
-![](images/shorten_media.png)
-
-
 ---
 
-![](images/turnbull_media.png)
+class:  middle
+
+# Motivation
+### - "Real World" data-sets often don't come pre-packaged
 
 
 ---
@@ -33,19 +33,51 @@ class: center, middle, inverse, title-slide
 class:  middle
 
 # Motivation
-### - Accessing and cleaning data in the real world
-### - Wholistic, public, potential interest, SEARCHABLE, find events
-### - Endless analysis possible, just a start, eg "Driving Debate" or "Sentiment"
+### - "Real World" data-sets often don't come pre-packaged
+### - Politics is public, and interesting
+
 
 ---
+
+class:  middle
+
+# Motivation
+### - "Real World" data-sets often don't come pre-packaged
+### - Politics is public, and interesting
+### - This type of analysis yet to be done
+
+---
+
+![](images/Hansard.png)
+
+---
+
+![](images/OpenAusImmi.png)
+
+---
+![](images/TheyVote.png)
+
+---
+
 
 class: middle
 
 # Source
 
 ### - Inspecting media pages (transcipts, media releases and opinion pieces)
-### - Engineering a method to systimaticall crawl the site
+### - Engineering a method to systimatically crawl the site
 ### - Understanding the typical layout of a media page
+
+---
+
+
+![](images/shorten_media.png)
+
+
+---
+
+![](images/turnbull_media.png)
+
 
 ---
 class: middle
@@ -59,10 +91,11 @@ class: middle
 - googleCloudStorageR
 
 
-.footnote[[hadley/rvest](github.com/hadley/rvest)  -  [cloudyr](github.com/cloudyr)]
+.footnote[[hadley/rvest](https://github.com/hadley/rvest)  -  [cloudyr](https://github.com/cloudyr)]
 
 ---
 class: middle
+
 
 
 
@@ -159,8 +192,10 @@ h
 ```
 
 
+.footnote[[tidyverse/purrr](https://github.com/tidyverse/purrr)]
 
 ---
+
 class: middle
 
 # Processing/Cleaning
@@ -186,17 +221,684 @@ div class="headline"&gt;
 
 ---
 
-#### Aidans ratio method
-#### boilerpipeR
+# Aidans ratio method
 
-.footnote[[mannau/boilerpipeR](github.com/mannau/boilerpipeR)]
----
-
-## Comparing methods
+### A way forward when you can't do Machine Learning
 
 ---
 
-class: middle
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:right;"&gt; row.num &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; raw &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; ONLY LABOR WILL DELIVER BETTER SCHOOLS AND HOSPITALS - Bill Shorten 2016var _sf_startpt=(new Date()).getTime() &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 2 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; var NB = NB || {}; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 3 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NB.environment = &amp;quot;production&amp;quot;; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NB.pageId = &amp;quot;2266&amp;quot;; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 5 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NB.Liquid = NB.Liquid || { &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 6 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Theme: { &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 7 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; version: 2, &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 8 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; name: &amp;quot;ALP 2015&amp;quot;, &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 9 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; parent: &amp;quot;bootstrap&amp;quot;, &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 10 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; variation: &amp;quot;&amp;quot; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 11 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; } &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 12 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; }; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 13 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NB.payments = NB.payments || {tokenize: true, elements: {}}; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 14 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; //&amp;lt;![CDATA[ &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 15 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; window._auth_token_name = &amp;quot;authenticity_token&amp;quot;; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 16 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; window._auth_token = &amp;quot;bfhLGOTMV+Q18weZ/e414F0q4EE1waQhIchHkQHtvZE=&amp;quot;; &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+---
+
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:right;"&gt; row.num &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; raw &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 17 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; //]]&amp;gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 18 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; window.twttr = (function (d,s,id) { &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 19 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; var t, js, fjs = d.getElementsByTagName(s)[0]; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 20 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; if (d.getElementById(id)) return; js=d.createElement(s); js.id=id; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 21 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; js.src=&amp;quot;//platform.twitter.com/widgets.js&amp;quot;; fjs.parentNode.insertBefore(js, fjs); &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 22 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; return window.twttr || (t = { _e: [], ready: function(f){ t._e.push(f) } }); &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 23 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; }(document, &amp;quot;script&amp;quot;, &amp;quot;twitter-wjs&amp;quot;)); &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 24 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NB.FBAppId = '126739610711965'; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 25 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; (function() { &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 26 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 27 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; po.src = '//apis.google.com/js/plusone.js'; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 28 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s); &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 29 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; })(); &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 30 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; var _gaq = _gaq || []; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 31 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; _gaq.push(['_setAccount', 'UA-75313993-1']); &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 32 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; _gaq.push(['_setDomainName', 'none']); &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+---
+
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:right;"&gt; row.num &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; raw &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 33 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; _gaq.push(['_setAllowLinker', true]); &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 34 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; _gaq.push(['_setCustomVar', 1, 'Parent', 'media_releases', 3]); &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 35 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; _gaq.push(['_setCustomVar', 1, 'UGC', 'false', 3]); &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 36 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; _gaq.push(['_setCustomVar', 1, 'Page type', 'Blog Post', 3]); &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 37 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; _gaq.push(['_trackPageview']); &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 38 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; _gaq.push(['_trackPageLoadTime']); &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 39 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; (function() { &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 40 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 41 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js'; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 42 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s); &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 43 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; })(); &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 44 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; var _qevents = _qevents || []; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 45 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; (function() { &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 46 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; var elem = document.createElement('script'); &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 47 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; elem.src = (document.location.protocol == &amp;quot;https:&amp;quot; ? &amp;quot;https://secure&amp;quot; : &amp;quot;http://edge&amp;quot;) + &amp;quot;.quantserve.com/quant.js&amp;quot;; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 48 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; elem.async = true; &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+---
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:right;"&gt; row.num &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; raw &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 49 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; elem.type = &amp;quot;text/javascript&amp;quot;; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 50 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; var scpt = document.getElementsByTagName('script')[0]; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 51 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; scpt.parentNode.insertBefore(elem, scpt); &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 52 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; })(); &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 53 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NB.appConfig.userIsLoggedIn = false; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 54 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NB.pageName = &amp;quot; ONLY LABOR WILL DELIVER BETTER SCHOOLS AND HOSPITALS&amp;quot;; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 55 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NB.pageSlug = &amp;quot;_only_labor_will_deliver_better_schools_and_hospitals&amp;quot;; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 56 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; var nbuid = &amp;quot;&amp;quot;; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 57 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; (function(){ &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 58 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; var t,i,e,n=window,o=document,a=arguments,s=&amp;quot;script&amp;quot;,r=[&amp;quot;config&amp;quot;,&amp;quot;track&amp;quot;,&amp;quot;identify&amp;quot;,&amp;quot;visit&amp;quot;,&amp;quot;push&amp;quot;,&amp;quot;call&amp;quot;,&amp;quot;trackForm&amp;quot;,&amp;quot;trackClick&amp;quot;],c=function(){var t,i=this;for(i._e=[],t=0;r.length&amp;gt;t;t++)(function(t){i[t]=function(){return i._e.push([t].concat(Array.prototype.slice.call(arguments,0))),i}})(r[t])};for(n._w=n._w||{},t=0;a.length&amp;gt;t;t++)n._w[a[t]]=n[a[t]]=n[a[t]]||new c;i=o.createElement(s),i.async=1,i.src=&amp;quot;//static.woopra.com/js/w.js&amp;quot;,e=o.getElementsByTagName(s)[0],e.parentNode.insertBefore(i,e) &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 59 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; })(&amp;quot;woopra&amp;quot;); &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 60 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; woopra.config({ &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 61 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; domain: 'alp.org.au' &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 62 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; }); &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 63 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; woopra.track(); &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 64 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; var $mcGoal = {'settings':{'uuid':'4871e3e756f1158f6afc92c51','dc':'us13'}}; &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+---
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:right;"&gt; row.num &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; raw &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 65 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; (function() { &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 66 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; var sp = document.createElement('script'); sp.type = 'text/javascript'; sp.async = true; sp.defer = true; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 67 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; sp.src = ('https:' == document.location.protocol ? 'https://s3.amazonaws.com/downloads.mailchimp.com' : 'http://downloads.mailchimp.com') + '/js/goal.min.js'; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 68 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(sp, s); &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 69 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; })(); &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 70 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Meet Bill &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 71 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Meet Bill &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 72 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; People First &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 73 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Labor's Values &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 74 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Bill's Family &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 75 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Positive Policies &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 76 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Our People &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 77 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Campaigns &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 78 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Save Medicare &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 79 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Make our Future Renewable &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 80 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Labor's Plan for Education &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+
+---
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:right;"&gt; row.num &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; raw &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 81 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Multinationals: Pay Your Fair Share &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 82 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Protect Our Penalty Rates &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 83 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Media &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 84 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Bill's Transcripts &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 85 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Bill's Speeches &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 86 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Bill's Media Releases &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 87 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Bill's Opinion Pieces &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 88 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Join Labor &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 89 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Bill's Media Releases &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 90 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Home &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 91 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Media &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 92 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Bill's Media Releases &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 93 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; ONLY LABOR WILL DELIVER BETTER SCHOOLS AND HOSPITALS &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 94 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; ONLY LABOR WILL DELIVER BETTER SCHOOLS AND HOSPITALS &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 95 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; THE HON BILL SHORTEN MP LEADER OF THE OPPOSITION  MEMBER FOR MARIBYRNONG &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 96 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; THE HON CHRIS BOWEN MPSHADOW TREASURERMEMBER FOR MCMAHON &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+---
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:right;"&gt; row.num &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; raw &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 97 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; ONLY LABOR WILL DELIVER BETTER SCHOOLS AND HOSPITALS &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 98 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Hospitals and schools across Australia will continue to suffer following Mr Turnbull’s pathetic funding proposals at today’s COAG meeting. &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 99 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; This has been a week of farce from Mr Turnbull and his Liberals.  Australians deserve better than this erratic and unstable Government. &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 100 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Mr Turnbull has been completely humiliated on his reckless plan for double taxation – but it’s clear Mr Turnbull is determined to keep it on the table.  Mr Turnbull has consistently said this irresponsible policy did not hinge on the endorsement of today’s COAG meeting. &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 101 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Today’s paltry health announcement restores a fraction of the $57 billion cut from hospital funding by Mr Turnbull, Tony Abbott and the Liberal Party. &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 102 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; The Liberals have taken our hospitals to the brink and this is nothing more than a Band-Aid on a bullet hole. &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 103 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Mr Turnbull has abandoned millions of Australian school kids just because they go to a public school.  He has confirmed his Government does not want to provide a single cent in funding to Government schools. &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 104 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; It’s staggering that Mr Turnbull talks so much about innovation, yet is planning to cut every single Commonwealth dollar from public education. &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 105 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Under Labor’s Your Child. Our Future plan to fully fund the Gonski reforms, every student in every school will get every opportunity to realise their potential, no matter where they live, no matter what type of school they go to – Government, Independent or Catholic. &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 106 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; The contrast with this week’s Government shambles and Labor could not be starker. &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 107 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Labor has positive plans for more secure and more fairly paid jobs, for protecting Medicare and for investing in better schools and better teachers. &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 108 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Mr Turnbull and his Liberals can only offer hare-brained and ill-thought out policies to make Australians pay more tax, while cutting schools and hospitals. &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 109 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Only the election of a Labor Government will stop Malcolm Turnbull’s double taxation plan that will put up your taxes and cut schools and hospitals. &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 110 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; FRIDAY, 1 APRIL 2016 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 111 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Do you like this post? &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 112 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Tweet &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+---
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:right;"&gt; row.num &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; raw &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 113 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Showing 1 reaction &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 114 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Optional email code &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 115 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Sign in with &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 116 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Facebook &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 117 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Twitter &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 118 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Optional email code &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 119 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Or sign in with email &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 120 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Remember me &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 121 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; or &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 122 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Create an account &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 123 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Optional email code &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 124 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Create an account &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 125 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; or &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 126 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Sign in with email &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 127 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Please check your e-mail for a link to activate your account. &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 128 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Larry Adds commented &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+---
+
+### First Plot in browser
+
+---
+
+
+```r
+df &lt;- df %&gt;%
+  mutate(is.text = case_when(!raw %in% stop_phrases &amp;
+                                alpha.frac &gt; 0.63 &amp;
+                                special.frac &gt; 0 &amp;
+                                whitespace.frac &gt; 0.07 &amp;
+                                whitespace.frac &gt; 0.7*special.frac &amp;
+                                all.char.count &gt;= 20 &amp;
+                                raw != lead(raw) ~ TRUE ))
+```
+
+---
+
+
+```r
+df &lt;- df %&gt;%
+  mutate(tail = case_when((all.char.count &lt; 26 &amp;
+                             alpha.frac &gt; .2 &amp;
+                             !raw %in% stop_phrases &amp;
+                             (special.frac + whitespace.frac) &gt; 0 &amp;
+                             special.count/all.char.count &lt; 0.76 &amp;
+                             raw != lead(raw) &amp;
+                             is.na(url) == TRUE &amp;
+                             is.na(is.text) == TRUE)|
+                            (alpha.frac &gt; 0.63 &amp;
+                               whitespace.frac &gt; 0.07 &amp;
+                               all.char.count &gt;= 20 &amp;
+                               raw != lead(raw) &amp;
+                               !raw %in% stop_phrases &amp;
+                               special.frac &lt; 0.33 &amp;
+                               numeric.frac &lt; 0.01 &amp;
+                               is.na(url) == TRUE &amp;
+                               is.na(is.text) == TRUE)|
+                            (alpha.frac &gt; 0.63 &amp;
+                               all.char.count &lt; 20 &amp;
+                               raw != lead(raw) &amp;
+                               special.frac &lt; 0.33 &amp;
+                               !raw %in% stop_phrases &amp;
+                               (special.frac + whitespace.frac) &gt; 0 &amp;
+                               numeric.frac &lt; 0.01 &amp;
+                               is.na(url) == TRUE &amp;
+                               is.na(is.text) == TRUE)~ TRUE))
+```
+
+---
+
+
+# boilerpipeR
 
 
 ```r
@@ -209,11 +911,11 @@ LargestContentExtractor()
 NumWordsRulesExtractor()
 ```
 
-
+.footnote[[mannau/boilerpipeR](https://github.com/mannau/boilerpipeR)]
 
 ---
 
-## tidytext
+# tidytext
 
 - Tokenize a string
 - Splitting a speech into sentences, phrases and words
@@ -229,7 +931,7 @@ text_df &lt;- tibble(
 ```
 
 
-.footnote[[juliasilge/tidytext](github.com/juliasilge/tidytext)]
+.footnote[[juliasilge/tidytext](https://github.com/juliasilge/tidytext)]
 ---
 
 class: middle
@@ -288,6 +990,7 @@ unnest_tokens(text_df, word, text, "ngrams", n = 3)
 
 ---
 
+
 class: middle, center
 
 ![](images/explore.png)
@@ -334,7 +1037,7 @@ places
 ```
 
 ```
-## [1] "Burnie"
+## [1] "Burnie"   "Tasmania"
 ```
 
 ```r
@@ -346,6 +1049,7 @@ orgs
 ```
 
 ---
+
 class: middle
 
 ## Sentiment Analysis
@@ -438,7 +1142,7 @@ df_speech &lt;- mutate(df_speech, who = case_when(
   str_detect(sent, "TURNBULL|PRIME MINISTER:") ~ "MT",
   str_detect(sent, "[[:upper:]]:") ~ "Other"
   )) %&gt;% 
-  tidyr::fill(who)
+  tidyr::fill( who)
 
 df_speech
 ```
@@ -454,25 +1158,24 @@ df_speech
 ## 5 PRIME MINISTER: Lignin which is the by-product of … MT
 ```
 
-
 ---
 class: middle
 
 
 # A useable data set!
 
-
 - ~2500 speeches
 - ~130,000 sentences
 - going back 4 years
 
-- Features including:
--- Speaker
--- Location
--- Date
--- Sentiment
+### Features including:
+- Speaker
+- Location
+- Date
+- Sentiment
 
 ---
+
 class: middle
 
 # Visualisation and Exloration Tools
@@ -482,18 +1185,7 @@ class: middle
 ### - leaflet (interactive maps)
 
 .footnote[
-[rstudio/shiny](http://github.com/rstudio/shiny) - [ropensci/plotly](http://github.com/ropensci/plotly) - [rstudio/leaflet](http://github.com/rstudio/leaflet)]
----
-
-class: middle
-
-# Analysis
-
-### - Who drives debate?
-### - Language and Location
-
-### - Sentiment
-### - Favouraite Phrases
+[rstudio/shiny](https://github.com/rstudio/shiny) - [ropensci/plotly](https://github.com/ropensci/plotly) - [rstudio/leaflet](https://github.com/rstudio/leaflet)]
 
 ---
 
@@ -569,11 +1261,328 @@ class: middle, center
 
 # Sentence Length by Location 
 
-![](SURFmeetup_files/figure-html/unnamed-chunk-27-1.png)&lt;!-- --&gt;
+![](SURFmeetup_files/figure-html/unnamed-chunk-37-1.png)&lt;!-- --&gt;
 
 
 
 ---
+
+# Sentiment
+
+
+```r
+test &lt;- test %&gt;%
+  mutate(sent.index = case_when(sentiment == "Very Negative" ~1,
+                                sentiment == "Negative" ~ 2,
+                                sentiment == "Neutral" ~ 3,
+                                sentiment == "Positive" ~ 4,
+                                sentiment == "Very Positive" ~ 5))
+
+testset &lt;- c("sports", "cricket", "fair")
+
+sent.count &lt;- test %&gt;%
+  filter(phrase %in% testset) %&gt;%
+  group_by(who, sent.index) %&gt;%
+  summarise(count = sum(count))
+```
+
+---
+
+## Overall Sentiment of the the politicians
+![](SURFmeetup_files/figure-html/unnamed-chunk-39-1.png)&lt;!-- --&gt;
+
+---
+
+## Sentiment about their parties
+![](SURFmeetup_files/figure-html/unnamed-chunk-40-1.png)&lt;!-- --&gt;
+
+
+---
+
+
+## Sentiment about Banks and Finance
+![](SURFmeetup_files/figure-html/unnamed-chunk-41-1.png)&lt;!-- --&gt;
+
+---
+
+## Sentiment about Banks and Finance
+![](SURFmeetup_files/figure-html/unnamed-chunk-42-1.png)&lt;!-- --&gt;
+
+---
+
+## Sentiment about workers and unions
+![](SURFmeetup_files/figure-html/unnamed-chunk-43-1.png)&lt;!-- --&gt;
+
+---
+
+## Sentiment about workers and unions
+![](SURFmeetup_files/figure-html/unnamed-chunk-44-1.png)&lt;!-- --&gt;
+
+---
+
+
+## Sentiment about other topics
+![](SURFmeetup_files/figure-html/unnamed-chunk-45-1.png)&lt;!-- --&gt;
+
+---
+
+## Sentiment about other topics
+![](SURFmeetup_files/figure-html/unnamed-chunk-46-1.png)&lt;!-- --&gt;
+
+
+---
+
+class: middle
+# - Favourite Phrases
+### define a 'phrase' - three or more words, can't all be stop-words
+### require them to be said at least 4 times (by anyone ever)
+
+
+
+
+---
+
+## Just focusing on Bill Shorten and Turnbull, and counting phrases by each speaker
+
+
+```r
+df_count_speaker &lt;- df_phrase %&gt;% 
+  filter(whitespace &gt; 1) %&gt;% 
+  filter(who %in% c("MT", "BS")) %&gt;%
+  group_by(phrase, who) %&gt;% 
+  summarise(count.speaker = sum(count))
+
+df_count_speaker &lt;- df_count_speaker %&gt;% 
+  spread(key = who, value = count.speaker)
+```
+
+---
+
+## Look at the top results from Turnbull, with more than double Shorten's count
+
+
+```r
+df_count_MT &lt;- df_count_speaker %&gt;% 
+  arrange(desc(MT)) %&gt;% 
+  head(n = 200) %&gt;% 
+  filter(BS&lt;0.5*MT)
+```
+
+
+
+
+
+
+---
+
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; phrase &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; BS &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; MT &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; the United States &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 26 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 122 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; to ensure that &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 26 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 111 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; jobs and growth &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 82 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; will continue to &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 27 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 74 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; rule of law &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 67 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; men and women &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 23 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 61 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; the rule of &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 7 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 59 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; the rule of law &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 59 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; around the world &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 22 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 58 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; fibre to the &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 57 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; the 21st century &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 54 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; the Department of &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 52 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; look forward to &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 16 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 48 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; the Minister for &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 9 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 47 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; violence against women &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 45 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; the importance of &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 12 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 44 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+
+
+---
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; phrase &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; BS &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; MT &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; in this country &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 155 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 14 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; the Liberal Party &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 120 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 30 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 15 per cent &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 119 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 14 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; the Abbott Government &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 111 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 6 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; the Australian people &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 88 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 43 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; cost of living &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 73 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; the rest of &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 71 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 35 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; of the future &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 67 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 22 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Mr Shorten said &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 62 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; the price of &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 59 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; for the future &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 57 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 17 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; the people who &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 57 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; of thousands of &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 56 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 24 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; the next election &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 56 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Tony Abbott and &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 53 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; In terms of &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 51 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 9 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+---
+
+![](SURFmeetup_files/figure-html/unnamed-chunk-53-1.png)&lt;!-- --&gt;
+
+---
+
+![](SURFmeetup_files/figure-html/unnamed-chunk-54-1.png)&lt;!-- --&gt;
+
+---
+
+class: middle, center
+
+# Thanks!
+
+## Aidan Morrison
+## [@QuixoticQuant](https://twitter.com/quixoticquant?lang=en)
+
+## Ross Ireland
+## [@RossTrendlock](https://twitter.com/rosstrendlock?lang=en)
     </textarea>
 <script src="libs/remark-latest.min.js"></script>
 <script>var slideshow = remark.create({
